@@ -441,7 +441,7 @@
 <p>The filesystem looks like an upside down tree. The topmost directory is the root directory that holds everything else. We refer to it using a slash character, <code class="docutils literal notranslate"><span class="pre">/</span></code>, on its own; this character is the leading slash in <code class="docutils literal notranslate"><span class="pre">/Users/nelle</span></code>.</p>
 <p><img alt="" src="_images/filesystem.png" /></p>
 <p>The user imhotep’s files are stored in <code class="docutils literal notranslate"><span class="pre">/Users/imhotep</span></code>, user larry’s in <code class="docutils literal notranslate"><span class="pre">/Users/larry</span></code>, and Nelle’s in <code class="docutils literal notranslate"><span class="pre">/Users/nelle</span></code>. Nelle is the user in our examples here; therefore, we get <code class="docutils literal notranslate"><span class="pre">/Users/nelle</span></code> as our home directory. Typically, when you open a new command prompt, you will be in your home directory to start.</p>
-<p><img alt="" src="_images/home-directories.png" /></p>
+<p><img alt="" src="images/home-directories.png" /></p>
 </section>
 </section>
 <section id="using-the-terminal">
@@ -692,7 +692,7 @@ bash goostats.sh $datafile stats-$datafile; done
 <li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">manmachine.txt</span></code></p></li>
 </ul>
 <p>and should see the following:</p>
-<p><img alt="" src="_images/cat.png" /></p>
+<p><img alt="" src="images/cat.png" /></p>
 <p>Our purpose here is to keep track of changes to files.  Our <code class="docutils literal notranslate"><span class="pre">.git</span></code> repository is doing this automatically, as we can see with the <code class="docutils literal notranslate"><span class="pre">status</span></code> command.  Note that we preface our commands with <code class="docutils literal notranslate"><span class="pre">git</span></code>, so we write <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>, and see:</p>
 <p><img alt="" src="_images/status.png" /></p>
 <p>As instructed, we want to add our file to be tracked by <code class="docutils literal notranslate"><span class="pre">git</span></code>.  To do so, we write:</p>
@@ -712,7 +712,7 @@ bash goostats.sh $datafile stats-$datafile; done
 <p>Now, let’s make changes to the file and see how to keep track of our updates.  Open the file using <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">manmachine.txt</span></code>, and add the following text:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;Contains</span> <span class="pre">song</span> <span class="pre">THE</span> <span class="pre">ROBOTS</span> <span class="pre">where</span> <span class="pre">lyrics</span> <span class="pre">reference</span> <span class="pre">the</span> <span class="pre">revolutionary</span> <span class="pre">technique</span> <span class="pre">of</span> <span class="pre">robotics,</span> <span class="pre">and</span> <span class="pre">how</span> <span class="pre">humans</span> <span class="pre">can</span> <span class="pre">use</span> <span class="pre">them</span> <span class="pre">as</span> <span class="pre">they</span> <span class="pre">wish&quot;</span></code></p>
 <p>Save the file and exit.  Now, check the status of your repository again using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>.  You should see that the <code class="docutils literal notranslate"><span class="pre">manmachine.txt</span></code> file has been modified.  To explore the specifics of the changes, we can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>.  You can see the <code class="docutils literal notranslate"><span class="pre">+</span></code> sign next to the new additions:</p>
-<p><img alt="" src="_images/diff.png" /></p>
+<p><img alt="" src="images/diff.png" /></p>
 <p>To save a record of our changes, we will again add the changes to the staging area, and commit them accompanied by a message.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">manmachine.txt</span></code></p></li>
@@ -825,7 +825,7 @@ bash goostats.sh $datafile stats-$datafile; done
 <section id="connecting-with-your-local-repository">
 <h3>Connecting with your local repository<a class="headerlink" href="#connecting-with-your-local-repository" title="Link to this heading">#</a></h3>
 <p>Once you create the new repository on <code class="docutils literal notranslate"><span class="pre">github.com</span></code> you should see the following:</p>
-<p><img alt="" src="_images/instructions.png" /></p>
+<p><img alt="" src="images/instructions.png" /></p>
 <p>We are interested in the commands for <strong>push an existing repository from the command line</strong>.  Making sure you are located in your <code class="docutils literal notranslate"><span class="pre">kraftwerk</span></code> folder on your desktop with the git repository, you can run the three commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jfkoehler</span><span class="o">/</span><span class="n">kraftwerk</span><span class="o">.</span><span class="n">git</span>
 <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">M</span> <span class="n">main</span>
@@ -896,7 +896,7 @@ bash goostats.sh $datafile stats-$datafile; done
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting uber.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing uber.py
 </pre></div>
 </div>
 </div>
