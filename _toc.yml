@@ -5,4 +5,5 @@ format: jb-book
 root: syllabus
 chapters:
 - file: intro_terminal
+- file: python_fundamentals_one
 
