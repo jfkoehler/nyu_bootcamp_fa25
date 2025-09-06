@@ -3,7 +3,21 @@
 
 format: jb-book
 root: syllabus
-chapters:
-- file: intro_terminal
-- file: python_fundamentals_one
+parts:
+  - caption: Introduction to Python
+    chapters:
+    - file: intro_terminal
+    - file: python_fundamentals_one
+
+  - caption: Homework
+    chapters:
+    - file: homework/homework_I
+
+  - caption: Class Notebook Solutions
+    chapters:
+    - file: solutions/python_fundamentals_one-solns
+
+
+
+
 
