@@ -168,9 +168,18 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro_terminal.html">Installations and Introduction to your Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_fundamentals_one.html">Python Fundamentals 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="homework/homework_I.html">Assignment 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Class Notebook Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="solutions/python_fundamentals_one-solns.html">Python Fundamentals 1</a></li>
 </ul>
 
     </div>
@@ -443,12 +452,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-&lt;class &#39;bool&#39;&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>KEY</strong> Note the type, it’s a bool or short for Boolean.</p>
 <p>Here are some more operations…bools can be combined with integers and floats…</p>
@@ -467,12 +470,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-True
-</pre></div>
-</div>
-</div>
 </div>
 <p>Some more operations… == is equal, &gt;= greater than or equals, &lt;= less than
 or equals, != not equals. Keep these in mind. There are also other ways to take the oppisite value by using the <code class="docutils literal notranslate"><span class="pre">not</span></code> built-in</p>
@@ -483,11 +480,6 @@ or equals, != not equals. Keep these in mind. There are also other ways to take 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
 </div>
 <p>Then notice what happens when we print a statement…</p>
 <div class="cell docutils container">
@@ -495,11 +487,6 @@ or equals, != not equals. Keep these in mind. There are also other ways to take 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">3</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x greater than y is&#39;</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x greater than y is False
 </pre></div>
 </div>
 </div>
@@ -526,13 +513,6 @@ try them in the IPython console and see what you get.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-False
-True
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>Comparisons in String</strong></p>
 <div class="cell docutils container">
@@ -541,11 +521,6 @@ True
 <span class="n">name2</span> <span class="o">=</span> <span class="s1">&#39;Spencer&#39;</span>
 <span class="n">check</span> <span class="o">=</span>  <span class="n">name1</span> <span class="o">&gt;</span> <span class="n">name2</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is Chase &gt; Spencer &quot;</span><span class="p">,</span><span class="n">check</span><span class="p">)</span> <span class="c1">#hmmmm....</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is Chase &gt; Spencer  False
 </pre></div>
 </div>
 </div>
@@ -562,20 +537,10 @@ and so on, until either sequence is exhausted. What determines the order…in th
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33
 </pre></div>
 </div>
 </div>
@@ -597,12 +562,6 @@ and so on, until either sequence is exhausted. What determines the order…in th
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 is greater than 0
-test
-</pre></div>
-</div>
-</div>
 </div>
 <p>Key issue, an <strong><code class="docutils literal notranslate"><span class="pre">if</span></code></strong> statement must always be followed by <strong>“<code class="docutils literal notranslate"><span class="pre">:</span></code>”</strong> and then the next line or lines associated with the statement must be indicated by 4 spaces. ONLY 4 spaces, Jupyter will do this automatically….there is also some kind of debate about spaces or tabs…here is some interesting info if you need to choose:</p>
 <p><a class="reference external" href="https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/">https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/</a></p>
@@ -614,11 +573,6 @@ test
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done!
 </pre></div>
 </div>
 </div>
@@ -635,12 +589,6 @@ test
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;else branch&#39;</span><span class="p">)</span>           <span class="c1"># do if false</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>if branch
-True
 </pre></div>
 </div>
 </div>
@@ -670,27 +618,11 @@ True
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;s&#39;, &#39;o&#39;, &#39;m&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>  <span class="c1"># can we re-assgin? # no...string is like a tuple where the object is immutable.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>  <span class="c1"># can we re-assgin? # no...string is like a tuple where the object is immutable.</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;str&#39; object does not support item assignment
 </pre></div>
 </div>
 </div>
