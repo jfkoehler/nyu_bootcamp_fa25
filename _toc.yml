@@ -18,6 +18,10 @@ parts:
     chapters:
     - file: solutions/python_fundamentals_one-solns
 
+  - caption: Extras
+    chapters:
+    - file: extras/intro_to_python/ladder-1
+
 
 
 
