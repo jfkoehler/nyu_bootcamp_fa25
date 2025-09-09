@@ -17,6 +17,7 @@ parts:
   - caption: Class Notebook Solutions
     chapters:
     - file: solutions/python_fundamentals_one-solns
+    - file: solutions/data_structures_solutions
 
   - caption: Extras
     chapters:
