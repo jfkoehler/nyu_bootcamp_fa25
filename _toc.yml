@@ -9,6 +9,7 @@ parts:
     - file: intro_terminal
     - file: python_fundamentals_one
     - file: data_structures
+    - file: intro_to_pandas
 
   - caption: Homework
     chapters:
