@@ -1,0 +1,3186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to pandas &#8212; Stern Data Bootcamp</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solutions/pandas_intro_take_II-soln';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Climb the Ladder!" href="../extras/intro_to_python/ladder-1.html" />
+    <link rel="prev" title="Data Structures and Introduction to Pandas" href="data_structures_solutions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Stern Data Bootcamp - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Stern Data Bootcamp - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../syllabus.html">
+                    Data Bootcamp
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro_terminal.html">Installations and Introduction to your Terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_fundamentals_one.html">Python Fundamentals 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structures.html">Data Structures and Introduction to Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro_to_pandas.html">Intro to pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas_intro_take_II.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../homework/homework_I.html">Assignment 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Class Notebook Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_fundamentals_one-solns.html">Python Fundamentals 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structures_solutions.html">Data Structures and Introduction to Pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../extras/intro_to_python/ladder-1.html">Climb the Ladder!</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/solutions/pandas_intro_take_II-soln.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fsolutions/pandas_intro_take_II-soln.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/solutions/pandas_intro_take_II-soln.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">Creating a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-and-columns">Selecting Rows and Columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selections-based-on-conditions">Selections based on conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-and-summarize">Sort and Summarize</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#introduction-to-pandas" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import and alias</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="creating-a-dataframe">
+<h2>Creating a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#creating-a-dataframe" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create DataFrame from dictionary</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CPI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+        <span class="s1">&#39;GDP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="s1">&#39;Year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CPI</th>
+      <th>GDP</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>8</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11</td>
+      <td>3</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>7</td>
+      <td>2022</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Head over to our course repository <a class="reference external" href="https://github.com/jfkoehler/nyu_bootcamp_fa25/blob/main/data/Ames_Housing_Sales.csv">here</a> and download the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file for the Ames Housing data.  Upload this to colab or your local jupyter lab instance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create DataFrame from a local .csv file</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;data/Ames_Housing_Sales.csv&#39;</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/Ames_Housing_Sales.csv&#39;</span>
+<span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="n">ames</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1stFlrSF</th>
+      <th>2ndFlrSF</th>
+      <th>3SsnPorch</th>
+      <th>Alley</th>
+      <th>BedroomAbvGr</th>
+      <th>BldgType</th>
+      <th>BsmtCond</th>
+      <th>BsmtExposure</th>
+      <th>BsmtFinSF1</th>
+      <th>BsmtFinSF2</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>Street</th>
+      <th>TotRmsAbvGrd</th>
+      <th>TotalBsmtSF</th>
+      <th>Utilities</th>
+      <th>WoodDeckSF</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>856.0</td>
+      <td>854.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>706.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>8</td>
+      <td>856.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>2008</td>
+      <td>208500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1262.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Gd</td>
+      <td>978.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>1262.0</td>
+      <td>AllPub</td>
+      <td>298.0</td>
+      <td>1976</td>
+      <td>1976</td>
+      <td>2007</td>
+      <td>181500.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>920.0</td>
+      <td>866.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>486.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>920.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2001</td>
+      <td>2002</td>
+      <td>2008</td>
+      <td>223500.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>961.0</td>
+      <td>756.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>Gd</td>
+      <td>No</td>
+      <td>216.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>756.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1915</td>
+      <td>1970</td>
+      <td>2006</td>
+      <td>140000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1145.0</td>
+      <td>1053.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>655.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1145.0</td>
+      <td>AllPub</td>
+      <td>192.0</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2008</td>
+      <td>250000.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1374</th>
+      <td>953.0</td>
+      <td>694.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>953.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1999</td>
+      <td>2000</td>
+      <td>2007</td>
+      <td>175000.0</td>
+    </tr>
+    <tr>
+      <th>1375</th>
+      <td>2073.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>790.0</td>
+      <td>163.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1542.0</td>
+      <td>AllPub</td>
+      <td>349.0</td>
+      <td>1978</td>
+      <td>1988</td>
+      <td>2010</td>
+      <td>210000.0</td>
+    </tr>
+    <tr>
+      <th>1376</th>
+      <td>1188.0</td>
+      <td>1152.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>Gd</td>
+      <td>No</td>
+      <td>275.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1152.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1941</td>
+      <td>2006</td>
+      <td>2010</td>
+      <td>266500.0</td>
+    </tr>
+    <tr>
+      <th>1377</th>
+      <td>1078.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>49.0</td>
+      <td>1029.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>5</td>
+      <td>1078.0</td>
+      <td>AllPub</td>
+      <td>366.0</td>
+      <td>1950</td>
+      <td>1996</td>
+      <td>2010</td>
+      <td>142125.0</td>
+    </tr>
+    <tr>
+      <th>1378</th>
+      <td>1256.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>830.0</td>
+      <td>290.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>1256.0</td>
+      <td>AllPub</td>
+      <td>736.0</td>
+      <td>1965</td>
+      <td>1965</td>
+      <td>2008</td>
+      <td>147500.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1379 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#look at the first five rows</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1stFlrSF</th>
+      <th>2ndFlrSF</th>
+      <th>3SsnPorch</th>
+      <th>Alley</th>
+      <th>BedroomAbvGr</th>
+      <th>BldgType</th>
+      <th>BsmtCond</th>
+      <th>BsmtExposure</th>
+      <th>BsmtFinSF1</th>
+      <th>BsmtFinSF2</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>Street</th>
+      <th>TotRmsAbvGrd</th>
+      <th>TotalBsmtSF</th>
+      <th>Utilities</th>
+      <th>WoodDeckSF</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>856.0</td>
+      <td>854.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>706.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>8</td>
+      <td>856.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>2008</td>
+      <td>208500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1262.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Gd</td>
+      <td>978.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>1262.0</td>
+      <td>AllPub</td>
+      <td>298.0</td>
+      <td>1976</td>
+      <td>1976</td>
+      <td>2007</td>
+      <td>181500.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>920.0</td>
+      <td>866.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>486.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>920.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2001</td>
+      <td>2002</td>
+      <td>2008</td>
+      <td>223500.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>961.0</td>
+      <td>756.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>Gd</td>
+      <td>No</td>
+      <td>216.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>756.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1915</td>
+      <td>1970</td>
+      <td>2006</td>
+      <td>140000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1145.0</td>
+      <td>1053.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>655.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1145.0</td>
+      <td>AllPub</td>
+      <td>192.0</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2008</td>
+      <td>250000.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#check out the shape of the data</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1379, 80)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#what are the column names?</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;1stFlrSF&#39;, &#39;2ndFlrSF&#39;, &#39;3SsnPorch&#39;, &#39;Alley&#39;, &#39;BedroomAbvGr&#39;,
+       &#39;BldgType&#39;, &#39;BsmtCond&#39;, &#39;BsmtExposure&#39;, &#39;BsmtFinSF1&#39;, &#39;BsmtFinSF2&#39;,
+       &#39;BsmtFinType1&#39;, &#39;BsmtFinType2&#39;, &#39;BsmtFullBath&#39;, &#39;BsmtHalfBath&#39;,
+       &#39;BsmtQual&#39;, &#39;BsmtUnfSF&#39;, &#39;CentralAir&#39;, &#39;Condition1&#39;, &#39;Condition2&#39;,
+       &#39;Electrical&#39;, &#39;EnclosedPorch&#39;, &#39;ExterCond&#39;, &#39;ExterQual&#39;, &#39;Exterior1st&#39;,
+       &#39;Exterior2nd&#39;, &#39;Fence&#39;, &#39;FireplaceQu&#39;, &#39;Fireplaces&#39;, &#39;Foundation&#39;,
+       &#39;FullBath&#39;, &#39;Functional&#39;, &#39;GarageArea&#39;, &#39;GarageCars&#39;, &#39;GarageCond&#39;,
+       &#39;GarageFinish&#39;, &#39;GarageQual&#39;, &#39;GarageType&#39;, &#39;GarageYrBlt&#39;, &#39;GrLivArea&#39;,
+       &#39;HalfBath&#39;, &#39;Heating&#39;, &#39;HeatingQC&#39;, &#39;HouseStyle&#39;, &#39;KitchenAbvGr&#39;,
+       &#39;KitchenQual&#39;, &#39;LandContour&#39;, &#39;LandSlope&#39;, &#39;LotArea&#39;, &#39;LotConfig&#39;,
+       &#39;LotFrontage&#39;, &#39;LotShape&#39;, &#39;LowQualFinSF&#39;, &#39;MSSubClass&#39;, &#39;MSZoning&#39;,
+       &#39;MasVnrArea&#39;, &#39;MasVnrType&#39;, &#39;MiscFeature&#39;, &#39;MiscVal&#39;, &#39;MoSold&#39;,
+       &#39;Neighborhood&#39;, &#39;OpenPorchSF&#39;, &#39;OverallCond&#39;, &#39;OverallQual&#39;,
+       &#39;PavedDrive&#39;, &#39;PoolArea&#39;, &#39;PoolQC&#39;, &#39;RoofMatl&#39;, &#39;RoofStyle&#39;,
+       &#39;SaleCondition&#39;, &#39;SaleType&#39;, &#39;ScreenPorch&#39;, &#39;Street&#39;, &#39;TotRmsAbvGrd&#39;,
+       &#39;TotalBsmtSF&#39;, &#39;Utilities&#39;, &#39;WoodDeckSF&#39;, &#39;YearBuilt&#39;, &#39;YearRemodAdd&#39;,
+       &#39;YrSold&#39;, &#39;SalePrice&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#what are the row names?</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=1379, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#all above in one place with .info()</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1379 entries, 0 to 1378
+Data columns (total 80 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   1stFlrSF       1379 non-null   float64
+ 1   2ndFlrSF       1379 non-null   float64
+ 2   3SsnPorch      1379 non-null   float64
+ 3   Alley          82 non-null     object 
+ 4   BedroomAbvGr   1379 non-null   int64  
+ 5   BldgType       1379 non-null   object 
+ 6   BsmtCond       953 non-null    object 
+ 7   BsmtExposure   953 non-null    object 
+ 8   BsmtFinSF1     1379 non-null   float64
+ 9   BsmtFinSF2     1379 non-null   float64
+ 10  BsmtFinType1   953 non-null    object 
+ 11  BsmtFinType2   952 non-null    object 
+ 12  BsmtFullBath   1379 non-null   int64  
+ 13  BsmtHalfBath   1379 non-null   int64  
+ 14  BsmtQual       953 non-null    object 
+ 15  BsmtUnfSF      1379 non-null   float64
+ 16  CentralAir     1379 non-null   object 
+ 17  Condition1     1379 non-null   object 
+ 18  Condition2     1379 non-null   object 
+ 19  Electrical     1379 non-null   object 
+ 20  EnclosedPorch  1379 non-null   float64
+ 21  ExterCond      1379 non-null   object 
+ 22  ExterQual      1379 non-null   object 
+ 23  Exterior1st    1379 non-null   object 
+ 24  Exterior2nd    1379 non-null   object 
+ 25  Fence          265 non-null    object 
+ 26  FireplaceQu    761 non-null    object 
+ 27  Fireplaces     1379 non-null   int64  
+ 28  Foundation     1379 non-null   object 
+ 29  FullBath       1379 non-null   int64  
+ 30  Functional     1379 non-null   object 
+ 31  GarageArea     1379 non-null   float64
+ 32  GarageCars     1379 non-null   int64  
+ 33  GarageCond     1379 non-null   object 
+ 34  GarageFinish   1379 non-null   object 
+ 35  GarageQual     1379 non-null   object 
+ 36  GarageType     1379 non-null   object 
+ 37  GarageYrBlt    1379 non-null   float64
+ 38  GrLivArea      1379 non-null   float64
+ 39  HalfBath       1379 non-null   int64  
+ 40  Heating        1379 non-null   object 
+ 41  HeatingQC      1379 non-null   object 
+ 42  HouseStyle     1379 non-null   object 
+ 43  KitchenAbvGr   1379 non-null   int64  
+ 44  KitchenQual    1379 non-null   object 
+ 45  LandContour    1379 non-null   object 
+ 46  LandSlope      1379 non-null   object 
+ 47  LotArea        1379 non-null   float64
+ 48  LotConfig      1379 non-null   object 
+ 49  LotFrontage    1379 non-null   float64
+ 50  LotShape       1379 non-null   object 
+ 51  LowQualFinSF   1379 non-null   float64
+ 52  MSSubClass     1379 non-null   int64  
+ 53  MSZoning       1379 non-null   object 
+ 54  MasVnrArea     1379 non-null   float64
+ 55  MasVnrType     582 non-null    object 
+ 56  MiscFeature    51 non-null     object 
+ 57  MiscVal        1379 non-null   float64
+ 58  MoSold         1379 non-null   int64  
+ 59  Neighborhood   1379 non-null   object 
+ 60  OpenPorchSF    1379 non-null   float64
+ 61  OverallCond    1379 non-null   int64  
+ 62  OverallQual    1379 non-null   int64  
+ 63  PavedDrive     1379 non-null   object 
+ 64  PoolArea       1379 non-null   float64
+ 65  PoolQC         7 non-null      object 
+ 66  RoofMatl       1379 non-null   object 
+ 67  RoofStyle      1379 non-null   object 
+ 68  SaleCondition  1379 non-null   object 
+ 69  SaleType       1379 non-null   object 
+ 70  ScreenPorch    1379 non-null   float64
+ 71  Street         1379 non-null   object 
+ 72  TotRmsAbvGrd   1379 non-null   int64  
+ 73  TotalBsmtSF    1379 non-null   float64
+ 74  Utilities      1379 non-null   object 
+ 75  WoodDeckSF     1379 non-null   float64
+ 76  YearBuilt      1379 non-null   int64  
+ 77  YearRemodAdd   1379 non-null   int64  
+ 78  YrSold         1379 non-null   int64  
+ 79  SalePrice      1379 non-null   float64
+dtypes: float64(21), int64(16), object(43)
+memory usage: 862.0+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Turns out we can even just use the url to a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file as the filepath to create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with.  In our repo, let’s look at the “raw” data by selecting the <a class="reference external" href="https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/Ames_Housing_Sales.csv">raw</a> button for the Ames data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#url to .csv raw data</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#use read_csv to read url to dataframe</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/Ames_Housing_Sales.csv&#39;</span>
+<span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#look at first 10 rows</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1stFlrSF</th>
+      <th>2ndFlrSF</th>
+      <th>3SsnPorch</th>
+      <th>Alley</th>
+      <th>BedroomAbvGr</th>
+      <th>BldgType</th>
+      <th>BsmtCond</th>
+      <th>BsmtExposure</th>
+      <th>BsmtFinSF1</th>
+      <th>BsmtFinSF2</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>Street</th>
+      <th>TotRmsAbvGrd</th>
+      <th>TotalBsmtSF</th>
+      <th>Utilities</th>
+      <th>WoodDeckSF</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>856.0</td>
+      <td>854.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>706.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>8</td>
+      <td>856.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>2008</td>
+      <td>208500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1262.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Gd</td>
+      <td>978.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>1262.0</td>
+      <td>AllPub</td>
+      <td>298.0</td>
+      <td>1976</td>
+      <td>1976</td>
+      <td>2007</td>
+      <td>181500.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>920.0</td>
+      <td>866.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>486.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>920.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2001</td>
+      <td>2002</td>
+      <td>2008</td>
+      <td>223500.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>961.0</td>
+      <td>756.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>Gd</td>
+      <td>No</td>
+      <td>216.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>756.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1915</td>
+      <td>1970</td>
+      <td>2006</td>
+      <td>140000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1145.0</td>
+      <td>1053.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>655.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1145.0</td>
+      <td>AllPub</td>
+      <td>192.0</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2008</td>
+      <td>250000.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>796.0</td>
+      <td>566.0</td>
+      <td>320.0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>732.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>5</td>
+      <td>796.0</td>
+      <td>AllPub</td>
+      <td>40.0</td>
+      <td>1993</td>
+      <td>1995</td>
+      <td>2009</td>
+      <td>143000.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1694.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>1369.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1686.0</td>
+      <td>AllPub</td>
+      <td>255.0</td>
+      <td>2004</td>
+      <td>2005</td>
+      <td>2007</td>
+      <td>307000.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1107.0</td>
+      <td>983.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>859.0</td>
+      <td>32.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1107.0</td>
+      <td>AllPub</td>
+      <td>235.0</td>
+      <td>1973</td>
+      <td>1973</td>
+      <td>2009</td>
+      <td>200000.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1022.0</td>
+      <td>752.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>8</td>
+      <td>952.0</td>
+      <td>AllPub</td>
+      <td>90.0</td>
+      <td>1931</td>
+      <td>1950</td>
+      <td>2008</td>
+      <td>129900.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1077.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>2fmCon</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>851.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>5</td>
+      <td>991.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1939</td>
+      <td>1950</td>
+      <td>2008</td>
+      <td>118000.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#look over info</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1379 entries, 0 to 1378
+Data columns (total 80 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   1stFlrSF       1379 non-null   float64
+ 1   2ndFlrSF       1379 non-null   float64
+ 2   3SsnPorch      1379 non-null   float64
+ 3   Alley          82 non-null     object 
+ 4   BedroomAbvGr   1379 non-null   int64  
+ 5   BldgType       1379 non-null   object 
+ 6   BsmtCond       953 non-null    object 
+ 7   BsmtExposure   953 non-null    object 
+ 8   BsmtFinSF1     1379 non-null   float64
+ 9   BsmtFinSF2     1379 non-null   float64
+ 10  BsmtFinType1   953 non-null    object 
+ 11  BsmtFinType2   952 non-null    object 
+ 12  BsmtFullBath   1379 non-null   int64  
+ 13  BsmtHalfBath   1379 non-null   int64  
+ 14  BsmtQual       953 non-null    object 
+ 15  BsmtUnfSF      1379 non-null   float64
+ 16  CentralAir     1379 non-null   object 
+ 17  Condition1     1379 non-null   object 
+ 18  Condition2     1379 non-null   object 
+ 19  Electrical     1379 non-null   object 
+ 20  EnclosedPorch  1379 non-null   float64
+ 21  ExterCond      1379 non-null   object 
+ 22  ExterQual      1379 non-null   object 
+ 23  Exterior1st    1379 non-null   object 
+ 24  Exterior2nd    1379 non-null   object 
+ 25  Fence          265 non-null    object 
+ 26  FireplaceQu    761 non-null    object 
+ 27  Fireplaces     1379 non-null   int64  
+ 28  Foundation     1379 non-null   object 
+ 29  FullBath       1379 non-null   int64  
+ 30  Functional     1379 non-null   object 
+ 31  GarageArea     1379 non-null   float64
+ 32  GarageCars     1379 non-null   int64  
+ 33  GarageCond     1379 non-null   object 
+ 34  GarageFinish   1379 non-null   object 
+ 35  GarageQual     1379 non-null   object 
+ 36  GarageType     1379 non-null   object 
+ 37  GarageYrBlt    1379 non-null   float64
+ 38  GrLivArea      1379 non-null   float64
+ 39  HalfBath       1379 non-null   int64  
+ 40  Heating        1379 non-null   object 
+ 41  HeatingQC      1379 non-null   object 
+ 42  HouseStyle     1379 non-null   object 
+ 43  KitchenAbvGr   1379 non-null   int64  
+ 44  KitchenQual    1379 non-null   object 
+ 45  LandContour    1379 non-null   object 
+ 46  LandSlope      1379 non-null   object 
+ 47  LotArea        1379 non-null   float64
+ 48  LotConfig      1379 non-null   object 
+ 49  LotFrontage    1379 non-null   float64
+ 50  LotShape       1379 non-null   object 
+ 51  LowQualFinSF   1379 non-null   float64
+ 52  MSSubClass     1379 non-null   int64  
+ 53  MSZoning       1379 non-null   object 
+ 54  MasVnrArea     1379 non-null   float64
+ 55  MasVnrType     582 non-null    object 
+ 56  MiscFeature    51 non-null     object 
+ 57  MiscVal        1379 non-null   float64
+ 58  MoSold         1379 non-null   int64  
+ 59  Neighborhood   1379 non-null   object 
+ 60  OpenPorchSF    1379 non-null   float64
+ 61  OverallCond    1379 non-null   int64  
+ 62  OverallQual    1379 non-null   int64  
+ 63  PavedDrive     1379 non-null   object 
+ 64  PoolArea       1379 non-null   float64
+ 65  PoolQC         7 non-null      object 
+ 66  RoofMatl       1379 non-null   object 
+ 67  RoofStyle      1379 non-null   object 
+ 68  SaleCondition  1379 non-null   object 
+ 69  SaleType       1379 non-null   object 
+ 70  ScreenPorch    1379 non-null   float64
+ 71  Street         1379 non-null   object 
+ 72  TotRmsAbvGrd   1379 non-null   int64  
+ 73  TotalBsmtSF    1379 non-null   float64
+ 74  Utilities      1379 non-null   object 
+ 75  WoodDeckSF     1379 non-null   float64
+ 76  YearBuilt      1379 non-null   int64  
+ 77  YearRemodAdd   1379 non-null   int64  
+ 78  YrSold         1379 non-null   int64  
+ 79  SalePrice      1379 non-null   float64
+dtypes: float64(21), int64(16), object(43)
+memory usage: 862.0+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-rows-and-columns">
+<h2>Selecting Rows and Columns<a class="headerlink" href="#selecting-rows-and-columns" title="Link to this heading">#</a></h2>
+<p>Both the rows and columns can be referred to based on their index <em>or</em> their names.  For index selection, we will use the <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> function and for names we use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select one column</span>
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;Alley&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       NaN
+1       NaN
+2       NaN
+3       NaN
+4       NaN
+       ... 
+1374    NaN
+1375    NaN
+1376    NaN
+1377    NaN
+1378    NaN
+Name: Alley, Length: 1379, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select two columns</span>
+<span class="n">ames</span><span class="p">[[</span><span class="s1">&#39;Alley&#39;</span><span class="p">,</span> <span class="s1">&#39;SaleType&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Alley</th>
+      <th>SaleType</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1374</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>1375</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>1376</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>1377</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+    <tr>
+      <th>1378</th>
+      <td>NaN</td>
+      <td>WD</td>
+    </tr>
+  </tbody>
+</table>
+<p>1379 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select first row</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1stFlrSF           856.0
+2ndFlrSF           854.0
+3SsnPorch            0.0
+Alley                NaN
+BedroomAbvGr           3
+                  ...   
+WoodDeckSF           0.0
+YearBuilt           2003
+YearRemodAdd        2003
+YrSold              2008
+SalePrice       208500.0
+Name: 0, Length: 80, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select first three rows and three columns</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1stFlrSF</th>
+      <th>2ndFlrSF</th>
+      <th>3SsnPorch</th>
+      <th>Alley</th>
+      <th>BedroomAbvGr</th>
+      <th>BldgType</th>
+      <th>BsmtCond</th>
+      <th>BsmtExposure</th>
+      <th>BsmtFinSF1</th>
+      <th>BsmtFinSF2</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>Street</th>
+      <th>TotRmsAbvGrd</th>
+      <th>TotalBsmtSF</th>
+      <th>Utilities</th>
+      <th>WoodDeckSF</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>856.0</td>
+      <td>854.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>706.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>8</td>
+      <td>856.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>2008</td>
+      <td>208500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1262.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Gd</td>
+      <td>978.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>1262.0</td>
+      <td>AllPub</td>
+      <td>298.0</td>
+      <td>1976</td>
+      <td>1976</td>
+      <td>2007</td>
+      <td>181500.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>920.0</td>
+      <td>866.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>486.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>920.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2001</td>
+      <td>2002</td>
+      <td>2008</td>
+      <td>223500.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select the Alley column</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Alley&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       NaN
+1       NaN
+2       NaN
+3       NaN
+4       NaN
+       ... 
+1374    NaN
+1375    NaN
+1376    NaN
+1377    NaN
+1378    NaN
+Name: Alley, Length: 1379, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select the Alley and BsmtCond columns</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Alley&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtCond&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Alley</th>
+      <th>BsmtCond</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>Gd</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1374</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1375</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+    <tr>
+      <th>1376</th>
+      <td>NaN</td>
+      <td>Gd</td>
+    </tr>
+    <tr>
+      <th>1377</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+    <tr>
+      <th>1378</th>
+      <td>NaN</td>
+      <td>TA</td>
+    </tr>
+  </tbody>
+</table>
+<p>1379 rows × 2 columns</p>
+</div></div></div>
+</div>
+<section id="selections-based-on-conditions">
+<h3>Selections based on conditions<a class="headerlink" href="#selections-based-on-conditions" title="Link to this heading">#</a></h3>
+<p>Often we are interested in subsets of the data that satisfy specific criteria.  We can use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method, the more dictionary like syntax, as well as the new <code class="docutils literal notranslate"><span class="pre">.query</span></code> method in pandas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">conditional</span> <span class="n">statement</span><span class="p">]</span>
+<span class="c1">#or</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">conditional</span> <span class="n">statement</span><span class="p">]</span>
+<span class="c1">#or</span>
+<span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">conditional</span> <span class="n">statement</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#houses with a 3 car garage -- GarageCars feature</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;GarageCars&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;GarageCars == 3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1stFlrSF</th>
+      <th>2ndFlrSF</th>
+      <th>3SsnPorch</th>
+      <th>Alley</th>
+      <th>BedroomAbvGr</th>
+      <th>BldgType</th>
+      <th>BsmtCond</th>
+      <th>BsmtExposure</th>
+      <th>BsmtFinSF1</th>
+      <th>BsmtFinSF2</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>Street</th>
+      <th>TotRmsAbvGrd</th>
+      <th>TotalBsmtSF</th>
+      <th>Utilities</th>
+      <th>WoodDeckSF</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>961.0</td>
+      <td>756.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>Gd</td>
+      <td>No</td>
+      <td>216.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>756.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1915</td>
+      <td>1970</td>
+      <td>2006</td>
+      <td>140000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1145.0</td>
+      <td>1053.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>655.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1145.0</td>
+      <td>AllPub</td>
+      <td>192.0</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2008</td>
+      <td>250000.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1182.0</td>
+      <td>1142.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>998.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>11</td>
+      <td>1175.0</td>
+      <td>AllPub</td>
+      <td>147.0</td>
+      <td>2005</td>
+      <td>2006</td>
+      <td>2006</td>
+      <td>345000.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1494.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1494.0</td>
+      <td>AllPub</td>
+      <td>160.0</td>
+      <td>2006</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>279500.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1158.0</td>
+      <td>1218.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1158.0</td>
+      <td>AllPub</td>
+      <td>240.0</td>
+      <td>2005</td>
+      <td>2006</td>
+      <td>2006</td>
+      <td>325300.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1337</th>
+      <td>1569.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>TwnhsE</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>988.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1386.0</td>
+      <td>AllPub</td>
+      <td>143.0</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>2009</td>
+      <td>175900.0</td>
+    </tr>
+    <tr>
+      <th>1339</th>
+      <td>1310.0</td>
+      <td>1140.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Mn</td>
+      <td>781.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1284.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>1998</td>
+      <td>1998</td>
+      <td>2009</td>
+      <td>340000.0</td>
+    </tr>
+    <tr>
+      <th>1359</th>
+      <td>1932.0</td>
+      <td>0.0</td>
+      <td>304.0</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>1336.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1932.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>394617.0</td>
+    </tr>
+    <tr>
+      <th>1364</th>
+      <td>1026.0</td>
+      <td>981.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>765.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>10</td>
+      <td>1017.0</td>
+      <td>AllPub</td>
+      <td>168.0</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2009</td>
+      <td>310000.0</td>
+    </tr>
+    <tr>
+      <th>1371</th>
+      <td>1578.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1573.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2008</td>
+      <td>2009</td>
+      <td>2009</td>
+      <td>287090.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>181 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#using dictionary syntax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#using .loc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#using .query</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#3 car garage and built after the year 2000 (YearBuilt feature)</span>
+<span class="n">conditions</span> <span class="o">=</span> <span class="p">(</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;GarageCars&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;YearBuilt&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">conditions</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1stFlrSF</th>
+      <th>2ndFlrSF</th>
+      <th>3SsnPorch</th>
+      <th>Alley</th>
+      <th>BedroomAbvGr</th>
+      <th>BldgType</th>
+      <th>BsmtCond</th>
+      <th>BsmtExposure</th>
+      <th>BsmtFinSF1</th>
+      <th>BsmtFinSF2</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>Street</th>
+      <th>TotRmsAbvGrd</th>
+      <th>TotalBsmtSF</th>
+      <th>Utilities</th>
+      <th>WoodDeckSF</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11</th>
+      <td>1182.0</td>
+      <td>1142.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>998.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>11</td>
+      <td>1175.0</td>
+      <td>AllPub</td>
+      <td>147.0</td>
+      <td>2005</td>
+      <td>2006</td>
+      <td>2006</td>
+      <td>345000.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1494.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1494.0</td>
+      <td>AllPub</td>
+      <td>160.0</td>
+      <td>2006</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>279500.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1158.0</td>
+      <td>1218.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>9</td>
+      <td>1158.0</td>
+      <td>AllPub</td>
+      <td>240.0</td>
+      <td>2005</td>
+      <td>2006</td>
+      <td>2006</td>
+      <td>325300.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1600.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1566.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>2009</td>
+      <td>256300.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1704.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>1218.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1704.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2007</td>
+      <td>2008</td>
+      <td>2010</td>
+      <td>306000.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1326</th>
+      <td>1464.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Gd</td>
+      <td>929.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>6</td>
+      <td>1485.0</td>
+      <td>AllPub</td>
+      <td>168.0</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>282922.0</td>
+    </tr>
+    <tr>
+      <th>1337</th>
+      <td>1569.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>TwnhsE</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>988.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1386.0</td>
+      <td>AllPub</td>
+      <td>143.0</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>2009</td>
+      <td>175900.0</td>
+    </tr>
+    <tr>
+      <th>1359</th>
+      <td>1932.0</td>
+      <td>0.0</td>
+      <td>304.0</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>1336.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1932.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>394617.0</td>
+    </tr>
+    <tr>
+      <th>1364</th>
+      <td>1026.0</td>
+      <td>981.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>765.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>10</td>
+      <td>1017.0</td>
+      <td>AllPub</td>
+      <td>168.0</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2009</td>
+      <td>310000.0</td>
+    </tr>
+    <tr>
+      <th>1371</th>
+      <td>1578.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1Fam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>Pave</td>
+      <td>7</td>
+      <td>1573.0</td>
+      <td>AllPub</td>
+      <td>0.0</td>
+      <td>2008</td>
+      <td>2009</td>
+      <td>2009</td>
+      <td>287090.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>130 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#average price of houses with 3 car garage built in 2000&#39;s?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ames</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">conditions</span><span class="p">][</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>317667.8461538461
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>CHALLENGE</strong></p>
+<p>Head back to our repository and create a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> named <code class="docutils literal notranslate"><span class="pre">health</span></code> from the <a class="reference external" href="https://github.com/jfkoehler/nyu_bootcamp_fa25/blob/main/data/health_insurance_charges.csv">health insurance charges</a> data.</p>
+<ol class="arabic simple">
+<li><p>Did people over 50 have different average costs than those under 50 years of age?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">health</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/health_insurance_charges.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">health</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>children</th>
+      <th>smoker</th>
+      <th>region</th>
+      <th>charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>18.0</td>
+      <td>male</td>
+      <td>33.770</td>
+      <td>1.0</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>1725.55230</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>33.000</td>
+      <td>3.0</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>4449.46200</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33.0</td>
+      <td>male</td>
+      <td>22.705</td>
+      <td>0.0</td>
+      <td>no</td>
+      <td>northwest</td>
+      <td>21984.47061</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>31.0</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>3756.62160</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>46.0</td>
+      <td>female</td>
+      <td>33.440</td>
+      <td>1.0</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>8240.58960</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">over_50</span> <span class="o">=</span> <span class="n">health</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">health</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">under_50</span> <span class="o">=</span> <span class="n">health</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">health</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">over_50</span> <span class="c1">#just a DataFrame --&gt; select the column and find the average</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>children</th>
+      <th>smoker</th>
+      <th>region</th>
+      <th>charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>60.0</td>
+      <td>female</td>
+      <td>25.84</td>
+      <td>0.0</td>
+      <td>no</td>
+      <td>northwest</td>
+      <td>28923.13692</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>62.0</td>
+      <td>female</td>
+      <td>26.29</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>southeast</td>
+      <td>27808.72510</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>56.0</td>
+      <td>female</td>
+      <td>39.82</td>
+      <td>0.0</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>11090.71780</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>52.0</td>
+      <td>female</td>
+      <td>30.78</td>
+      <td>1.0</td>
+      <td>no</td>
+      <td>northeast</td>
+      <td>10797.33620</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>56.0</td>
+      <td>male</td>
+      <td>40.30</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10602.38500</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1327</th>
+      <td>51.0</td>
+      <td>male</td>
+      <td>30.03</td>
+      <td>1.0</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>9377.90470</td>
+    </tr>
+    <tr>
+      <th>1329</th>
+      <td>52.0</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>no</td>
+      <td>southwest</td>
+      <td>10325.20600</td>
+    </tr>
+    <tr>
+      <th>1330</th>
+      <td>57.0</td>
+      <td>female</td>
+      <td>25.74</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>southeast</td>
+      <td>12629.16560</td>
+    </tr>
+    <tr>
+      <th>1332</th>
+      <td>52.0</td>
+      <td>NaN</td>
+      <td>44.70</td>
+      <td>3.0</td>
+      <td>no</td>
+      <td>southwest</td>
+      <td>11411.68500</td>
+    </tr>
+    <tr>
+      <th>1337</th>
+      <td>61.0</td>
+      <td>female</td>
+      <td>29.07</td>
+      <td>0.0</td>
+      <td>yes</td>
+      <td>northwest</td>
+      <td>29141.36030</td>
+    </tr>
+  </tbody>
+</table>
+<p>293 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#over 50 charges</span>
+<span class="n">over_50</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18590.903296723547
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#under 50 charges</span>
+<span class="n">under_50</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11266.310656624202
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>What is the average <code class="docutils literal notranslate"><span class="pre">bmi</span></code> of all the male observations?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span> <span class="o">=</span> <span class="n">health</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span>
+<span class="n">health</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">condition</span><span class="p">,</span> <span class="s1">&#39;bmi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.150359281437126
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Did people in the southeast spend more or less on average than those in the northeast?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#southeast average charges</span>
+<span class="n">health</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">health</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;southeast&#39;</span><span class="p">),</span> <span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14444.922324256757
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#northeast average charges</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">(</span><span class="n">health</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;northeast&#39;</span><span class="p">)</span>
+<span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;charges&#39;</span>
+<span class="n">health</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">condition</span><span class="p">,</span> <span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12977.084407629629
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sort-and-summarize">
+<h3>Sort and Summarize<a class="headerlink" href="#sort-and-summarize" title="Link to this heading">#</a></h3>
+<p>In addition to the <code class="docutils literal notranslate"><span class="pre">.mean</span></code> method, there are a variety of helpful sorting, selecting, and aggregating functions built in to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.  We explore these below.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.nlargest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.nsmallest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.sort_values</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.value_counts</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.describe</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#sort the data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find the 10 largest bmi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#how many entries for each region?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#describe the numeric data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#describe all the data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>CHALLENGE</strong></p>
+<p>With your neighbor, find another <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file (from our repo <a class="reference external" href="https://github.com/jfkoehler/nyu_bootcamp_fa25/tree/main/data">here</a> or from googling around) and create a DataFrame from this.  Check that the data is formatted as you expect and if there are any datatype or missing value issues.  Use three other pandas methods (feel free to consult the cheat sheet <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">here</a>) to explore your data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load in your data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#look at the info</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#first few rows of data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#method 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#method 2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#method 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>CHALLENGE</strong></p>
+<p>With your neighbor, identify an industry or topic of interest.  Try to find a structured data source for this online.  Were you able to find a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file format or something different?  What are some challenges you feel exist about turning this data into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_structures_solutions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Structures and Introduction to Pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../extras/intro_to_python/ladder-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Climb the Ladder!</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">Creating a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-and-columns">Selecting Rows and Columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selections-based-on-conditions">Selections based on conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-and-summarize">Sort and Summarize</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lenny
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

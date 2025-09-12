@@ -20,6 +20,7 @@ parts:
     chapters:
     - file: solutions/python_fundamentals_one-solns
     - file: solutions/data_structures_solutions
+    - file: solutions/pandas_intro_take_II-soln
 
   - caption: Extras
     chapters:
