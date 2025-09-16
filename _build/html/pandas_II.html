@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reading Files and Split Apply Combine &#8212; Stern Data Bootcamp</title>
+    <title>Missing Values and Split Apply Combine &#8212; Stern Data Bootcamp</title>
   
   
   
@@ -175,7 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="data_structures.html">Data Structures and Introduction to Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_to_pandas.html">Intro to pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_intro_take_II.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reading Files and Split Apply Combine</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Missing Values and Split Apply Combine</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="nav bd-sidenav">
@@ -406,7 +406,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reading Files and Split Apply Combine</h1>
+    <h1>Missing Values and Split Apply Combine</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -440,8 +440,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reading-files-and-split-apply-combine">
-<h1>Reading Files and Split Apply Combine<a class="headerlink" href="#reading-files-and-split-apply-combine" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="missing-values-and-split-apply-combine">
+<h1>Missing Values and Split Apply Combine<a class="headerlink" href="#missing-values-and-split-apply-combine" title="Link to this heading">#</a></h1>
 <p>This lesson focuses on reviewing our basics with pandas and extending them to more advanced munging and cleaning.  Specifically, we will discuss how to load data files, work with missing values, use split-apply-combine, use string methods, and work with string and datetime objects.  By the end of this lesson you should feel confident doing basic exploratory data analysis using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
 <p><strong>OBJECTIVES</strong></p>
 <ul class="simple">
@@ -574,361 +574,6 @@ memory usage: 3.1+ MB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sample data</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>foo</td>
-      <td>one</td>
-      <td>0.253328</td>
-      <td>1.124696</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>bar</td>
-      <td>one</td>
-      <td>0.748201</td>
-      <td>1.591034</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>foo</td>
-      <td>two</td>
-      <td>-0.399240</td>
-      <td>-1.052419</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>bar</td>
-      <td>three</td>
-      <td>2.149915</td>
-      <td>-1.166818</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>foo</td>
-      <td>two</td>
-      <td>-0.135781</td>
-      <td>-0.559004</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>bar</td>
-      <td>two</td>
-      <td>0.111682</td>
-      <td>1.302565</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>foo</td>
-      <td>one</td>
-      <td>-2.096804</td>
-      <td>0.703057</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>foo</td>
-      <td>three</td>
-      <td>1.193118</td>
-      <td>-0.655961</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># foo vs. bar</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-    <tr>
-      <th>A</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>bar</th>
-      <td>1.003266</td>
-      <td>0.575594</td>
-    </tr>
-    <tr>
-      <th>foo</th>
-      <td>-0.237076</td>
-      <td>-0.087926</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># one two or three?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-    <tr>
-      <th>B</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>one</th>
-      <td>-0.365092</td>
-      <td>1.139595</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>1.671516</td>
-      <td>-0.911389</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>-0.141113</td>
-      <td>-0.102953</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A and B</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-    <tr>
-      <th>A</th>
-      <th>B</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="3" valign="top">bar</th>
-      <th>one</th>
-      <td>0.748201</td>
-      <td>1.591034</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>2.149915</td>
-      <td>-1.166818</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>0.111682</td>
-      <td>1.302565</td>
-    </tr>
-    <tr>
-      <th rowspan="3" valign="top">foo</th>
-      <th>one</th>
-      <td>-0.921738</td>
-      <td>0.913876</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>1.193118</td>
-      <td>-0.655961</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>-0.267510</td>
-      <td>-0.805712</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># working with multi-index</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>bar</td>
-      <td>one</td>
-      <td>0.748201</td>
-      <td>1.591034</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>bar</td>
-      <td>three</td>
-      <td>2.149915</td>
-      <td>-1.166818</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>bar</td>
-      <td>two</td>
-      <td>0.111682</td>
-      <td>1.302565</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>foo</td>
-      <td>one</td>
-      <td>-0.921738</td>
-      <td>0.913876</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>foo</td>
-      <td>three</td>
-      <td>1.193118</td>
-      <td>-0.655961</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>foo</td>
-      <td>two</td>
-      <td>-0.267510</td>
-      <td>-0.805712</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># age less than 40 survival rate</span>
 <span class="n">titanic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;titanic&#39;</span><span class="p">)</span>
 <span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1067,6 +712,41 @@ memory usage: 3.1+ MB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># survival rate of each sex?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># survival rate of each class?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># each class and sex survival rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># working with multi-index -- changing form of results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># age less than 40 survival rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">less_than_40</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
@@ -1096,9 +776,6 @@ memory usage: 3.1+ MB
 </ol>
 <ol class="arabic simple" start="3">
 <li><p>What is another question <code class="docutils literal notranslate"><span class="pre">groupby</span></code> can help us answer here?</p></li>
-</ol>
-<ol class="arabic simple" start="4">
-<li><p>What does the <code class="docutils literal notranslate"><span class="pre">as_index</span></code> argument do?  Demonstrate an example.</p></li>
 </ol>
 </section>
 </section>
@@ -1203,6 +880,55 @@ memory usage: 3.1+ MB
 <section id="datetime">
 <h3><code class="docutils literal notranslate"><span class="pre">datetime</span></code><a class="headerlink" href="#datetime" title="Link to this heading">#</a></h3>
 <p>A special type of data for pandas are entities that can be considered as dates.  We can create a special datatype for these using <code class="docutils literal notranslate"><span class="pre">pd.to_datetime</span></code>, and access the functions of the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module as a result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ufo date column</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#make it a datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#assign as time column</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#investigate datatypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#set as index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#sort the values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#groupby month and average</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-resources">
