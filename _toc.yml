@@ -11,6 +11,8 @@ parts:
     - file: data_structures
     - file: intro_to_pandas
     - file: pandas_intro_take_II
+    - file: pandas_II
+
 
   - caption: Homework
     chapters:
