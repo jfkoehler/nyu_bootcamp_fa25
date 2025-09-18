@@ -12,6 +12,7 @@ parts:
     - file: intro_to_pandas
     - file: pandas_intro_take_II
     - file: pandas_II
+    - file: intro_to_plotting
 
 
   - caption: Homework
