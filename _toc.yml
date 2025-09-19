@@ -25,6 +25,7 @@ parts:
     - file: solutions/data_structures_solutions
     - file: solutions/pandas_intro_take_II-soln
     - file: solutions/pandas_II-solns
+    - file: solutions/intro_to_plotting-solns
 
   - caption: Extras
     chapters:
