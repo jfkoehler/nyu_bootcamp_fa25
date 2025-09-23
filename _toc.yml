@@ -13,6 +13,8 @@ parts:
     - file: pandas_intro_take_II
     - file: pandas_II
     - file: intro_to_plotting
+    - file: plotting_seaborn
+    - file: Plotting_with_bokeh
 
 
   - caption: Homework
