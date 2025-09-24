@@ -14,12 +14,13 @@ parts:
     - file: pandas_II
     - file: intro_to_plotting
     - file: plotting_seaborn
-    - file: Plotting_with_bokeh
+    
 
 
   - caption: Homework
     chapters:
     - file: homework/homework_I
+    - file: homework/homework_III
 
   - caption: Class Notebook Solutions
     chapters:
@@ -28,10 +29,12 @@ parts:
     - file: solutions/pandas_intro_take_II-soln
     - file: solutions/pandas_II-solns
     - file: solutions/intro_to_plotting-solns
+    - file: solutions/plotting_seaborn-solns
 
   - caption: Extras
     chapters:
     - file: extras/intro_to_python/ladder-1
+    - file: extras/visualization/Plotting_with_bokeh
 
 
 
