@@ -14,6 +14,7 @@ parts:
     - file: pandas_II
     - file: intro_to_plotting
     - file: plotting_seaborn
+    - file: eda_exercise
     
 
 
