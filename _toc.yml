@@ -15,6 +15,7 @@ parts:
     - file: intro_to_plotting
     - file: plotting_seaborn
     - file: eda_exercise
+    - file: data_apis
     
 
 
