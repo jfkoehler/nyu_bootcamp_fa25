@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'data_apis';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignment 1" href="homework/homework_I.html" />
+    <link rel="next" title="Extracting Data From HTML" href="html_data.html" />
     <link rel="prev" title="More EDA, Time Series, and Geospatial Data" href="eda_exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,6 +183,12 @@
 
 <li class="toctree-l1"><a class="reference internal" href="eda_exercise.html">More EDA, Time Series, and Geospatial Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Accessing Data with API’s</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="html_data.html">Extracting Data From HTML</a></li>
+
+
+
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework</span></p>
@@ -491,64 +497,6 @@ direct access to some database or parts of it without having do download everyth
 <h2>Accessing Data Without a Library<a class="headerlink" href="#accessing-data-without-a-library" title="Link to this heading">#</a></h2>
 <p><img alt="" src="_images/fred_api.png" /></p>
 <p>To start, we will use the federal reserve of St. Louis API as a running example.  Head over <a class="reference external" href="https://fred.stlouisfed.org/docs/api/fred/">here</a> to view the documentation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#json data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;is_alive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span>
-  <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;street_address&quot;</span><span class="p">:</span> <span class="s2">&quot;21 2nd Street&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;NY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;10021-3100&quot;</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;phone_numbers&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="s2">&quot;212 555-1234&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;office&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="s2">&quot;646 555-4567&quot;</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;Catherine&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Thomas&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Trevor&quot;</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;spouse&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;first_name&#39;: &#39;John&#39;,
- &#39;last_name&#39;: &#39;Smith&#39;,
- &#39;is_alive&#39;: True,
- &#39;age&#39;: 27,
- &#39;address&#39;: {&#39;street_address&#39;: &#39;21 2nd Street&#39;,
-  &#39;city&#39;: &#39;New York&#39;,
-  &#39;state&#39;: &#39;NY&#39;,
-  &#39;postal_code&#39;: &#39;10021-3100&#39;},
- &#39;phone_numbers&#39;: [{&#39;type&#39;: &#39;home&#39;, &#39;number&#39;: &#39;212 555-1234&#39;},
-  {&#39;type&#39;: &#39;office&#39;, &#39;number&#39;: &#39;646 555-4567&#39;}],
- &#39;children&#39;: [&#39;Catherine&#39;, &#39;Thomas&#39;, &#39;Trevor&#39;],
- &#39;spouse&#39;: nan}
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="exploring-the-data-releases">
 <h2>Exploring the data releases<a class="headerlink" href="#exploring-the-data-releases" title="Link to this heading">#</a></h2>
@@ -779,7 +727,6 @@ direct access to some database or parts of it without having do download everyth
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#explore the text</span>
-<span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -906,6 +853,29 @@ Successfully installed edgar-5.6.3 rapidfuzz-3.14.1
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">edgar</span> <span class="kn">import</span> <span class="n">Company</span><span class="p">,</span> <span class="n">TXTML</span>
+
+<span class="n">company</span> <span class="o">=</span> <span class="n">Company</span><span class="p">(</span><span class="s2">&quot;INTERNATIONAL BUSINESS MACHINES CORP&quot;</span><span class="p">,</span> <span class="s2">&quot;0000051143&quot;</span><span class="p">)</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">company</span><span class="o">.</span><span class="n">get_10K</span><span class="p">()</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">TXTML</span><span class="o">.</span><span class="n">parse_full_10K</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[:</span><span class="mi">1000</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> version=&#39;1.0&#39; encoding=&#39;ASCII&#39;? XBRL Document Created with the Workiva Platform Copyright 2025 Workiva r:e5e4c6dd-a0e3-4a8d-aa78-eb8c6666d274,g:21436d97-1a01-444f-9a49-04dee52d2242,d:af7e987c179946fe9556e9c6006b4d87 ibm-20241231 CHX 0000051143 2024 FY false P5Y P3Y http://fasb.org/us-gaap/2024#Revenues http://fasb.org/us-gaap/2024#Revenues http://fasb.org/us-gaap/2024#Revenues P1Y P1Y http://fasb.org/us-gaap/2024#SellingGeneralAndAdministrativeExpense http://fasb.org/us-gaap/2024#SellingGeneralAndAdministrativeExpense http://fasb.org/us-gaap/2024#SellingGeneralAndAdministrativeExpense P1Y P1Y http://fasb.org/us-gaap/2024#AccountsPayableCurrent http://fasb.org/us-gaap/2024#AccountsPayableCurrent http://fasb.org/us-gaap/2024#PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization http://fasb.org/us-gaap/2024#PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization http://fasb.org/us-gaap/2024#ShortTermB
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="last-fm">
 <h2>Last FM<a class="headerlink" href="#last-fm" title="Link to this heading">#</a></h2>
@@ -980,11 +950,11 @@ Successfully installed edgar-5.6.3 rapidfuzz-3.14.1
       </div>
     </a>
     <a class="right-next"
-       href="homework/homework_I.html"
+       href="html_data.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Assignment 1</p>
+        <p class="prev-next-title">Extracting Data From HTML</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
