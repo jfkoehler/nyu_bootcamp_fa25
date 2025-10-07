@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'html_data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignment 1" href="homework/homework_I.html" />
+    <link rel="next" title="Inference and Hypothesis Testing" href="hyp_testing.html" />
     <link rel="prev" title="Accessing Data with API’s" href="data_apis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,6 +190,11 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="hyp_testing.html">Inference and Hypothesis Testing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="projects/midterm.html">Midterm Project</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="nav bd-sidenav">
@@ -204,6 +209,14 @@
 <li class="toctree-l1"><a class="reference internal" href="solutions/pandas_II-solns.html">Missing Values and Split Apply Combine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions/intro_to_plotting-solns.html"><code class="docutils literal notranslate"><span class="pre">datetime</span></code>, and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions/plotting_seaborn-solns.html">More plotting with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="solutions/data_apis-solns.html">Accessing Data with API’s</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="solutions/html_data-solns.html">Extracting Data From HTML</a></li>
+
+
 
 
 
@@ -509,8 +522,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fact&#39;: &#39;Cats often overract to unexpected stimuli because of their extremely sensitive nervous system.&#39;,
- &#39;length&#39;: 94}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fact&#39;: &#39;The life expectancy of cats has nearly doubled over the last fifty years.&#39;,
+ &#39;length&#39;: 73}
 </pre></div>
 </div>
 </div>
@@ -544,6 +557,14 @@ because of their extremely sensitive nervous system.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#make request for random cat picture</span>
+<span class="n">cat_pic_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.thecatapi.com/v1/images/search&#39;</span>
+<span class="n">pic_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cat_pic_url</span><span class="p">)</span>
+<span class="n">pic_response</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
 </pre></div>
 </div>
 </div>
@@ -551,6 +572,13 @@ because of their extremely sensitive nervous system.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#extract the url</span>
+<span class="n">cat_pic</span> <span class="o">=</span> <span class="n">pic_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">cat_pic</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://cdn2.thecatapi.com/images/80v.gif&#39;
 </pre></div>
 </div>
 </div>
@@ -558,8 +586,17 @@ because of their extremely sensitive nervous system.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#display a random picture of a cat with a random cat fact</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;fact&#39;</span><span class="p">])</span>
+<span class="n">cat_pic</span> <span class="o">=</span> <span class="n">pic_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">cat_pic</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The life expectancy of cats has nearly doubled over the last fifty years.
+</pre></div>
+</div>
+<img alt="_images/ab16371f4e91fea52fdd66ab33a578c7ce2751a97cf6b7ee1ad08d35d210936f.gif" src="_images/ab16371f4e91fea52fdd66ab33a578c7ce2751a97cf6b7ee1ad08d35d210936f.gif" />
 </div>
 </div>
 </section>
@@ -941,43 +978,158 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#read in the tables</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#how many tables?</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#look at the fourth table</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#try to convert sales to float</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#replace and coerce as float</span>
-<span class="c1"># fourth_table[&#39;Claimed sales*&#39;] = fourth_table[&#39;Claimed sales*&#39;].replace({&#39;20[disputed – discuss]&#39;: 20}).astype(&#39;float&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#alternative with string method</span>
-<span class="c1">#fourth_table[&#39;Claimed sales*&#39;].str.replace(&#39;[disputed – discuss]&#39;, &#39;&#39;, regex = False)</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">66</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#read in the tables</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/html.py:1240,</span> in <span class="ni">read_html</span><span class="nt">(io, match, flavor, header, index_col, skiprows, attrs, parse_dates, thousands, encoding, decimal, converters, na_values, keep_default_na, displayed_only, extract_links, dtype_backend, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="p">[</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span>         <span class="n">is_file_like</span><span class="p">(</span><span class="n">io</span><span class="p">),</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1230</span>     <span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1231</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1232</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1233</span>         <span class="s2">&quot;Passing literal html to &#39;read_html&#39; is deprecated and &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1234</span>         <span class="s2">&quot;will be removed in a future version. To read from a &quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1237</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1238</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1240</span> <span class="k">return</span> <span class="n">_parse</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span>     <span class="n">flavor</span><span class="o">=</span><span class="n">flavor</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1242</span>     <span class="n">io</span><span class="o">=</span><span class="n">io</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span>     <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1244</span>     <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1245</span>     <span class="n">index_col</span><span class="o">=</span><span class="n">index_col</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1246</span>     <span class="n">skiprows</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1247</span>     <span class="n">parse_dates</span><span class="o">=</span><span class="n">parse_dates</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1248</span>     <span class="n">thousands</span><span class="o">=</span><span class="n">thousands</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span>     <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1250</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1251</span>     <span class="n">decimal</span><span class="o">=</span><span class="n">decimal</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span>     <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1253</span>     <span class="n">na_values</span><span class="o">=</span><span class="n">na_values</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1254</span>     <span class="n">keep_default_na</span><span class="o">=</span><span class="n">keep_default_na</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>     <span class="n">displayed_only</span><span class="o">=</span><span class="n">displayed_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1256</span>     <span class="n">extract_links</span><span class="o">=</span><span class="n">extract_links</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1257</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1259</span> <span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/html.py:983,</span> in <span class="ni">_parse</span><span class="nt">(flavor, io, match, attrs, encoding, displayed_only, extract_links, storage_options, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="n">p</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="n">io</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="n">compiled_match</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>     <span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">980</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">982</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">983</span>     <span class="n">tables</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_tables</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">984</span> <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">caught</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">985</span>     <span class="c1"># if `io` is an io-like object, check if it&#39;s seekable</span>
+<span class="g g-Whitespace">    </span><span class="mi">986</span>     <span class="c1"># and try to rewind it before trying the next parser</span>
+<span class="g g-Whitespace">    </span><span class="mi">987</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="s2">&quot;seekable&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">io</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/html.py:249,</span> in <span class="ni">_HtmlFrameParser.parse_tables</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="k">def</span> <span class="nf">parse_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span><span class="sd">     Parse and return all tables from the DOM.</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span><span class="sd">     list of parsed (header, body, footer) tuples from tables.</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">249</span>     <span class="n">tables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_tables</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_doc</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>     <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parse_thead_tbody_tfoot</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/html.py:806,</span> in <span class="ni">_LxmlFrameParser._build_doc</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">804</span>             <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">805</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">806</span>         <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;text_content&quot;</span><span class="p">):</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/html.py:785,</span> in <span class="ni">_LxmlFrameParser._build_doc</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">783</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span>     <span class="k">if</span> <span class="n">is_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">785</span>         <span class="k">with</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>             <span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>         <span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>             <span class="n">r</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>         <span class="c1"># try to parse the input in the simplest way</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py:215,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py:521,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">521</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py:630,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">630</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py:559,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">559</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py:639,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">639</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 403: Forbidden
 </pre></div>
 </div>
 </div>
@@ -1023,6 +1175,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine the soup</span>
+<span class="n">soup</span>
 </pre></div>
 </div>
 </div>
@@ -1038,6 +1191,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the &lt;p&gt; tags</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1050,6 +1204,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the i tag</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1062,6 +1217,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all the i tags</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1074,6 +1230,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all good paragraphs</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;good&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1106,7 +1263,20 @@ memory usage: 652.0+ bytes
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#examine the text</span>
+<span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1119,6 +1289,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#turn it into soup!</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1133,6 +1304,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find the img tag</span>
+<span class="n">rjordan</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;alt&#39;</span><span class="p">:</span> <span class="s1">&#39;Through the Wall&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1140,11 +1312,12 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#extract the url</span>
+<span class="n">rjordan</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/verso/static/pitchfork-us/assets/logo-inverted.svg&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://media.pitchfork.com/photos/686fda609a8ba5160e24a4f5/1:1/w_1600%2Cc_limit/Rochelle-Jordan-Through-the-Wall.jpeg&#39;
 </pre></div>
 </div>
 </div>
@@ -1152,6 +1325,7 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find all img tags</span>
+<span class="n">album_covers</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;loading&#39;</span><span class="p">:</span> <span class="s1">&#39;eager&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1159,17 +1333,18 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#explore attributes</span>
+<span class="n">album_covers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;alt&#39;: &#39;Pitchfork&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;alt&#39;: &#39;Through the Wall&#39;,
+ &#39;loading&#39;: &#39;eager&#39;,
  &#39;class&#39;: [&#39;ResponsiveImageContainer-eNxvmU&#39;,
   &#39;cfBbTk&#39;,
   &#39;responsive-image__image&#39;],
- &#39;srcset&#39;: &#39;&#39;,
- &#39;sizes&#39;: &#39;100vw&#39;,
- &#39;src&#39;: &#39;/verso/static/pitchfork-us/assets/logo-inverted.svg&#39;}
+ &#39;src&#39;: &#39;https://media.pitchfork.com/photos/686fda609a8ba5160e24a4f5/1:1/w_1600%2Cc_limit/Rochelle-Jordan-Through-the-Wall.jpeg&#39;,
+ &#39;data-src&#39;: &#39;https://media.pitchfork.com/photos/686fda609a8ba5160e24a4f5/1:1/w_1600%2Cc_limit/Rochelle-Jordan-Through-the-Wall.jpeg&#39;}
 </pre></div>
 </div>
 </div>
@@ -1177,6 +1352,108 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#extract source of image url</span>
+<span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">album_covers</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://media.pitchfork.com/photos/686fda609a8ba5160e24a4f5/1:1/w_1600%2Cc_limit/Rochelle-Jordan-Through-the-Wall.jpeg
+https://media.pitchfork.com/photos/68d451a69c3c6f55d4d0056c/1:1/w_1600%2Cc_limit/Olivia%2520Dean:%2520The%2520Art%2520of%2520Loving.jpg
+https://media.pitchfork.com/photos/68d4592a6ed8409621157708/1:1/w_1600%2Cc_limit/crushed:%2520no%2520scope.jpg
+https://media.pitchfork.com/photos/68d2e2d8e65ab6c4e53d0d3b/1:1/w_1600%2Cc_limit/Doja-Cat-Vie.jpeg
+https://media.pitchfork.com/photos/68d2e2decb3272812d7f2419/1:1/w_1600%2Cc_limit/M-Sage-Tender-Wading.jpeg
+https://media.pitchfork.com/photos/68d2e68641514ff7aced1edb/1:1/w_1600%2Cc_limit/Xexa-Kissom.jpeg
+https://media.pitchfork.com/photos/686c9e74a532685e05d31b79/1:1/w_1600%2Cc_limit/Neko-Case-Neon-Grey-Midnight-Green.jpeg
+https://media.pitchfork.com/photos/683f1d0c3fde63fa7e254a8c/1:1/w_1600%2Cc_limit/Cate-Le-Bon-Michelangelo-Dying.jpeg
+https://media.pitchfork.com/photos/68d2e4248fa679692ea3b0b0/1:1/w_1600%2Cc_limit/Amanda-Shires.jpeg
+https://media.pitchfork.com/photos/687e56009ed852edcd5f7228/1:1/w_1600%2Cc_limit/Mariah-Carey-Here-for-It-All.jpeg
+https://media.pitchfork.com/photos/68d1476b7bb8997dae717de1/1:1/w_1600%2Cc_limit/George%2520Riley:%2520More%2520Is%2520More.jpg
+https://media.pitchfork.com/photos/68d2e5014718c5f042bcafbe/1:1/w_1600%2Cc_limit/Mason-Lindahl.jpeg
+https://media.pitchfork.com/photos/68d7fbc6a6193503d914ec77/1:1/w_1600%2Cc_limit/op%2520ivy%2520energy%2520new%2520art.jpg
+https://media.pitchfork.com/photos/68766c20c943bb924a1e6b53/1:1/w_1600%2Cc_limit/Wilco-Jeff-Tweedy-Twilight-Override.jpeg
+https://media.pitchfork.com/photos/68669e851370710946689f23/1:1/w_1600%2Cc_limit/Geese-Getting-Killed.jpeg
+https://media.pitchfork.com/photos/68d19b19a56eddb6982e4426/1:1/w_1600%2Cc_limit/Piotr%2520Kurek:%2520Songs%2520and%2520Bodies.jpg
+https://media.pitchfork.com/photos/68d44c0c9d1dd79e3258c0b6/1:1/w_1600%2Cc_limit/Paul%2520St.%2520Hilaire:%2520w:%2520the%2520Producers.jpg
+https://media.pitchfork.com/photos/68d44a34637ffe2813534434/1:1/w_1600%2Cc_limit/O-Mika-Vainio-Sysivalo.jpeg
+https://media.pitchfork.com/photos/68c074a6bafdaf4613f3d22c/1:1/w_1600%2Cc_limit/Frost-Children-SISTER.jpeg
+https://media.pitchfork.com/photos/6852c7651edfe994c7a7db0d/1:1/w_1600%2Cc_limit/Mum-History-of-Silence.jpeg
+https://media.pitchfork.com/photos/6859a53e91e198a6eccbcd98/1:1/w_1600%2Cc_limit/Cardi-B-AM-I-THE-DRAMA.jpeg
+https://media.pitchfork.com/photos/68d14bd0dc3868310ffd06b3/1:1/w_1600%2Cc_limit/Asher%2520White:%25208%2520Tips%2520for%2520Full%2520Catastrophe%2520Living.jpg
+https://media.pitchfork.com/photos/68bee55ba5288c22f081a13f/1:1/w_1600%2Cc_limit/Orcutt%2520Shelley%2520Miller:%2520Orcutt%2520Shelley%2520Miller.jpg
+https://media.pitchfork.com/photos/68c1ad5e97dbecbb468adbe7/1:1/w_1600%2Cc_limit/Joanne%2520Robertson:%2520Blurrr.png
+https://media.pitchfork.com/photos/682c8f2481b971ad1da21391/1:1/w_1600%2Cc_limit/Kiean-Hebden-William-Tyler.jpeg
+https://media.pitchfork.com/photos/68a77f27fec645b6c01a384e/1:1/w_1600%2Cc_limit/JADE:%2520THAT%25E2%2580%2599S%2520SHOWBIZ%2520BABY!.jpg
+https://media.pitchfork.com/photos/6890e9ea08ad3de9ddf6fb6d/1:1/w_1600%2Cc_limit/Joan-Shelley-Real_Warmth.jpeg
+https://media.pitchfork.com/photos/68765f644babbb813247abe4/1:1/w_1600%2Cc_limit/Verses-GT.jpg
+https://media.pitchfork.com/photos/68c075d979bd4731b0e3273f/1:1/w_1600%2Cc_limit/Body-Lapse.jpeg
+https://media.pitchfork.com/photos/68cab8abedbc5dab7dce1e4a/1:1/w_1600%2Cc_limit/The%2520Jim%2520Carroll%2520Band:%2520Catholic%2520Boy.jpg
+https://media.pitchfork.com/photos/687a63920313304cd3c6e70d/1:1/w_1600%2Cc_limit/Nine-Inch-Nails-Tron-Ares.jpeg
+https://media.pitchfork.com/photos/6852c89c1a3ea782992b8d62/1:1/w_1600%2Cc_limit/Wednesday%2520-%2520Bleeds%2520_%2520Album%2520Art.jpg
+https://media.pitchfork.com/photos/68404833d7208ee6aab06d45/1:1/w_1600%2Cc_limit/King-Princess-Girl-Violence.jpeg
+https://media.pitchfork.com/photos/6892621938316f2937292dbb/1:1/w_1600%2Cc_limit/Anysia-Kym-Tony-Seltzer-Purity.jpg
+https://media.pitchfork.com/photos/68c1a910a6e8ac9b029e57b9/1:1/w_1600%2Cc_limit/Lola%2520Young:%2520I%25E2%2580%2599m%2520Only%2520F**king%2520Myself.jpg
+https://media.pitchfork.com/photos/68a77c46a06ec4bdbd5e1491/1:1/w_1600%2Cc_limit/Maruja:%2520Pain%2520to%2520Power.jpg
+https://media.pitchfork.com/photos/68c94c17f9d5a6df769c784f/1:1/w_1600%2Cc_limit/Ed%2520Sheeran:%2520Play.jpg
+https://media.pitchfork.com/photos/6852f9ea65a82c1ba8490c00/1:1/w_1600%2Cc_limit/Mark-William-Lewis.jpeg
+https://media.pitchfork.com/photos/68befbc105b69384754e8c80/1:1/w_1600%2Cc_limit/The%2520Hidden%2520Cameras:%2520BRONTO.jpg
+https://media.pitchfork.com/photos/686e94a929e130068873fcf0/1:1/w_1600%2Cc_limit/SFOPW%2520LP%2520artwork.jpg
+https://media.pitchfork.com/photos/68c1a38ba4afd4fdf05c8bed/1:1/w_1600%2Cc_limit/Oli%2520XL:%2520Lick%2520The%2520Lens%2520%25E2%2580%2593%2520Pt.1.png
+https://media.pitchfork.com/photos/68c1a6652d49386b8b8e64b2/1:1/w_1600%2Cc_limit/dolo2000:%2520Let%25E2%2580%2599s%2520Meet%2520at%2520Junes.jpg
+https://media.pitchfork.com/photos/68bef91e81f32eb660e16ab0/1:1/w_1600%2Cc_limit/Twenty%2520One%2520Pilots:%2520Breach.jpg
+https://media.pitchfork.com/photos/68a77138bb43caf8fc953fcb/1:1/w_1600%2Cc_limit/Liquid%2520Mike:%2520Hell%2520Airport.jpg
+https://media.pitchfork.com/photos/68bef517e49ce4f37d3a05ee/1:1/w_1600%2Cc_limit/Ben%2520Bondy:%2520XO%2520Salt%2520Llif3.jpg
+https://media.pitchfork.com/photos/68beec1205b69384754e8c6f/1:1/w_1600%2Cc_limit/Phish:%2520The%2520Siket%2520Disc.jpg
+https://media.pitchfork.com/photos/68482d89999c36c34ccc2e08/1:1/w_1600%2Cc_limit/David-Byrne-Who-Is-the-Sky.jpg
+https://media.pitchfork.com/photos/6890cacff483b9433490d4d1/1:1/w_1600%2Cc_limit/Algernon-Cadwallader-Trying-Not-to-Have-a-Thought.jpeg
+https://media.pitchfork.com/photos/6821f3eda11fce871c49c3ab/1:1/w_1600%2Cc_limit/La-Dispute.jpg
+https://media.pitchfork.com/photos/6852c76e1a3ea782992b8d60/1:1/w_1600%2Cc_limit/Titanic-Hagen.jpeg
+https://media.pitchfork.com/photos/68b731c5cbf411b6502d00e7/1:1/w_1600%2Cc_limit/james-K-Friend.jpg
+https://media.pitchfork.com/photos/68b7338c50a0cab53248566c/1:1/w_1600%2Cc_limit/Flur-Plunge.jpg
+https://media.pitchfork.com/photos/682633ba4f74bf6d40c34788/1:1/w_1600%2Cc_limit/Jehnny-Beth.jpeg
+https://media.pitchfork.com/photos/68badade8fbe73019589f955/1:1/w_1600%2Cc_limit/Justin-Bieber-SWAG-II.jpeg
+https://media.pitchfork.com/photos/6878f48a81d661e77eea5194/1:1/w_1600%2Cc_limit/Blood-Orange-Essex-Honey.jpeg
+https://media.pitchfork.com/photos/68b094a7603fa0ed2c61746b/1:1/w_1600%2Cc_limit/Hayley-Williams.jpeg
+https://media.pitchfork.com/photos/6866ee859fae87fd8a466bef/1:1/w_1600%2Cc_limit/Hot-Chip-Joy-in-Repetition.jpeg
+https://media.pitchfork.com/photos/688bd69b7a1e8d71e73dab91/1:1/w_1600%2Cc_limit/Ghostface-Killah-Supreme-Clientele-2.jpeg
+https://media.pitchfork.com/photos/68a7324245bcfce3216c4b1d/1:1/w_1600%2Cc_limit/Brian%2520Dunne:%2520Clams%2520Casino.jpg
+https://media.pitchfork.com/photos/6835bbf0429ed5e162f2ed7f/1:1/w_1600%2Cc_limit/Lucrecia-Dalt.jpeg
+https://media.pitchfork.com/photos/682f27ddc1d38d1e62b78327/1:1/w_1600%2Cc_limit/Saint-Etienne-International.jpeg
+https://media.pitchfork.com/photos/688badaabacddb7c4d838a91/1:1/w_1600%2Cc_limit/Mariah-the-Scientist-HEARTS-SOLD-SEPARATELY.jpeg
+https://media.pitchfork.com/photos/68b742082aae76d47a40f11c/1:1/w_1600%2Cc_limit/Anna%2520Domino:%2520East%2520and%2520West.png
+https://media.pitchfork.com/photos/688139b98aaff4180ad4544d/1:1/w_1600%2Cc_limit/Slipknot.jpeg
+https://media.pitchfork.com/photos/683f114f95637f20b5cdf0e9/1:1/w_1600%2Cc_limit/Big-Thief-Double-Infinity.jpg
+https://media.pitchfork.com/photos/68a735c7d078cf3ba776ef3a/1:1/w_1600%2Cc_limit/Akasha%2520System:%2520Heliocene.jpg
+https://media.pitchfork.com/photos/689f50b9c118bfc3b3ae202a/1:1/w_1600%2Cc_limit/Ami%2520Taf%2520Ra:%2520The%2520Prophet%2520and%2520the%2520Madman.png
+https://media.pitchfork.com/photos/68a35f97c70b2b534e826a05/1:1/w_1600%2Cc_limit/Greg-Freeman-Burnover.jpg
+https://media.pitchfork.com/photos/685ac30129cd201b50714ded/1:1/w_1600%2Cc_limit/The-Beths.jpg
+https://media.pitchfork.com/photos/68124556a49f61d1f367a406/1:1/w_1600%2Cc_limit/Stars-of-the-Lid.jpeg
+https://media.pitchfork.com/photos/6849e175cbfa215d84092588/1:1/w_1600%2Cc_limit/Sabrina-Carpenter-Mans-Best-Friend.jpeg
+https://media.pitchfork.com/photos/6848552ac2dc0460d301c16c/1:1/w_1600%2Cc_limit/Margo-Price-Hard-Headed-Woman.jpeg
+https://media.pitchfork.com/photos/68a72d70a06ec4bdbd5e1486/1:1/w_1600%2Cc_limit/Ganser:%2520Animal%2520Hospital.jpg
+https://media.pitchfork.com/photos/68a72f4b2a96239891aec832/1:1/w_1600%2Cc_limit/Anna%2520Tivel:%2520Animal%2520Poem.jpg
+https://media.pitchfork.com/photos/68a728a9d078cf3ba776ef35/1:1/w_1600%2Cc_limit/Zach%2520Top:%2520Ain%25E2%2580%2599t%2520in%2520It%2520for%2520My%2520Health.png
+https://media.pitchfork.com/photos/68a72bc389f8cb7ea039dba2/1:1/w_1600%2Cc_limit/Lathe%2520of%2520Heaven:%2520Aurora.jpg
+https://media.pitchfork.com/photos/68ac81eabb97955c9378cd1f/1:1/w_1600%2Cc_limit/The%2520Tragically%2520Hip:%2520Fully%2520Completely.jpg
+https://media.pitchfork.com/photos/68a4d659a7b48ce879ae8f04/1:1/w_1600%2Cc_limit/Haruomi%2520Hosono:%2520Tropical%2520Dandy.jpg
+https://media.pitchfork.com/photos/68aef3d778698103426cc7ac/1:1/w_1600%2Cc_limit/DJ-Sprinkles.jpeg
+https://media.pitchfork.com/photos/68ac8d42eb468428cae14d1e/1:1/w_1600%2Cc_limit/CMAT:%2520EURO-COUNTRY.jpg
+https://media.pitchfork.com/photos/6826252a520d7320cb7d3c22/1:1/w_1600%2Cc_limit/Wolf-Alice-The-Clearing.jpeg
+https://media.pitchfork.com/photos/68a387959412dc73833bbc3d/1:1/w_1600%2Cc_limit/Earl-Sweatshirt-Live-Laugh-Love.jpg
+https://media.pitchfork.com/photos/68ac7f53bb97955c9378cd1b/1:1/w_1600%2Cc_limit/Sir%2520Chloe:%2520Swallow%2520the%2520Knife.jpg
+https://media.pitchfork.com/photos/682b321c50010556cb1c24f6/1:1/w_1600%2Cc_limit/Hunx.jpeg
+https://media.pitchfork.com/photos/681b8732c4b8ad702a7602bf/1:1/w_1600%2Cc_limit/Nourished-by-Time-The-Passionate-Ones.jpg
+https://media.pitchfork.com/photos/689a0a99c6775ac1892dde31/1:1/w_1600%2Cc_limit/Alison%2520Goldfrapp:%2520Flux.jpg
+https://media.pitchfork.com/photos/68a35df2954b5e6496a66b3a/1:1/w_1600%2Cc_limit/Kathleen-Edwards-Billionaire.jpeg
+https://media.pitchfork.com/photos/684049043a7384724a09c510/1:1/w_1600%2Cc_limit/Water-From-Your-Eyes-Its-a-Beautiful-Place.jpg
+https://media.pitchfork.com/photos/68a4c6fcba2250d1417e14b7/1:1/w_1600%2Cc_limit/Kaitlyn%2520Aurelia%2520Smith:%2520Gush.png
+https://media.pitchfork.com/photos/68a4ce2d78e77c7ca96e19b0/1:1/w_1600%2Cc_limit/Scree:%2520August.jpg
+https://media.pitchfork.com/photos/6859ef2478507ce803132849/1:1/w_1600%2Cc_limit/Mac-Demarco-Guitar.jpeg
+https://media.pitchfork.com/photos/683dd2c485fcca934fd2c197/1:1/w_1600%2Cc_limit/Superchunk.jpeg
+https://media.pitchfork.com/photos/6865393dc9bb2d9aba676f10/1:1/w_1600%2Cc_limit/Charley-Crockett-Dollar-a-Day.jpeg
+https://media.pitchfork.com/photos/68a4bf35730cac24e9958417/1:1/w_1600%2Cc_limit/Pavement:%2520Slanted%2520and%2520Enchanted.png
+https://media.pitchfork.com/photos/68a8b457cf076a3c09d8fb2f/1:1/w_1600%2Cc_limit/Skintone%2520Edition%2520Volume%25201.jpg
+https://media.pitchfork.com/photos/683f48e1d57eb470256c990a/1:1/w_1600%2Cc_limit/Hand-Habits-Blue-Reminder.jpeg
 </pre></div>
 </div>
 </div>
@@ -1184,6 +1461,12 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the genre tags</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;rubric__name&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Pop/R&amp;B&#39;
 </pre></div>
 </div>
 </div>
@@ -1191,15 +1474,36 @@ memory usage: 652.0+ bytes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the text from the genres</span>
+<span class="n">genres</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;rubric__name&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>PROBLEM</strong></p>
-<p>Use the url below to the npr book review site.  Make a request, turn this into a soup object, and use the inspect tool to locate the title of each article on the page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.npr.org/sections/book-reviews/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#[i.text for i in genres]</span>
+<span class="n">genre_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">genre</span> <span class="ow">in</span> <span class="n">genres</span><span class="p">:</span>
+    <span class="n">genre_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">genre</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">genre_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Electronic&#39;,
+ &#39;Experimental&#39;,
+ &#39;Folk/Country&#39;,
+ &#39;Jazz&#39;,
+ &#39;Metal&#39;,
+ &#39;Pop/R&amp;B&#39;,
+ &#39;Rap&#39;,
+ &#39;Rock&#39;}
 </pre></div>
 </div>
 </div>
@@ -1221,6 +1525,21 @@ memory usage: 652.0+ bytes
 </tr>
 </tbody>
 </table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://quotes.toscrape.com/&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">quote_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">quote_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1265,11 +1584,11 @@ memory usage: 652.0+ bytes
       </div>
     </a>
     <a class="right-next"
-       href="homework/homework_I.html"
+       href="hyp_testing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Assignment 1</p>
+        <p class="prev-next-title">Inference and Hypothesis Testing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

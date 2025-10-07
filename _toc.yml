@@ -20,6 +20,7 @@ parts:
     - file: hyp_testing
 
   - caption: Projects
+    chapters:
     - file: projects/midterm
     
   - caption: Homework
