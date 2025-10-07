@@ -461,7 +461,6 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals">Confidence intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-difference-in-means">Confidence interval for Difference in Means</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs-data">Jobs Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-of-error">Margin of Error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-significance">Testing Significance</a></li>
@@ -1214,48 +1213,6 @@ Name: p1, dtype: int64
 </div>
 </div>
 </section>
-<section id="confidence-interval-for-difference-in-means">
-<h2>Confidence interval for Difference in Means<a class="headerlink" href="#confidence-interval-for-difference-in-means" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#statsmodels imports</span>
-<span class="kn">from</span> <span class="nn">statsmodels.stats.weightstats</span> <span class="kn">import</span> <span class="n">CompareMeans</span><span class="p">,</span> <span class="n">DescrStatsW</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create our objects polls are DescrStatsWeights</span>
-<span class="c1">#compare means of these</span>
-<span class="n">dq1</span> <span class="o">=</span> <span class="n">DescrStatsW</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
-<span class="n">dq2</span> <span class="o">=</span> <span class="n">DescrStatsW</span><span class="p">(</span><span class="n">q2</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">CompareMeans</span><span class="p">(</span><span class="n">dq1</span><span class="p">,</span> <span class="n">dq2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#90% confidence interval -- represents the difference between </span>
-<span class="n">c</span><span class="o">.</span><span class="n">tconfint_diff</span><span class="p">(</span><span class="mf">.05</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.3521083067086064, 0.9012250266247266)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#so what?</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="jobs-data">
 <h2>Jobs Data<a class="headerlink" href="#jobs-data" title="Link to this heading">#</a></h2>
 <p>The data below is a sample of job postings from New York City.  We want to investigate the lower and upper bound columns.</p>
@@ -1642,7 +1599,6 @@ Just like before, we will set a tolerance for rejecting the null hypothesis.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals">Confidence intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-difference-in-means">Confidence interval for Difference in Means</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs-data">Jobs Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-of-error">Margin of Error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-significance">Testing Significance</a></li>
