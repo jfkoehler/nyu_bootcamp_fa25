@@ -23,7 +23,6 @@ parts:
     - file: projects/midterm
     
 
-
   - caption: Homework
     chapters:
     - file: homework/homework_I
