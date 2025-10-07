@@ -17,6 +17,10 @@ parts:
     - file: eda_exercise
     - file: data_apis
     - file: html_data
+    - file: hyp_testing
+
+  - caption: Projects
+    - file: projects/midterm
     
 
 
@@ -33,6 +37,8 @@ parts:
     - file: solutions/pandas_II-solns
     - file: solutions/intro_to_plotting-solns
     - file: solutions/plotting_seaborn-solns
+    - file: solutions/data_apis-solns.ipynb
+    - file: solutions/html_data-solns.ipynb
 
   - caption: Extras
     chapters:
