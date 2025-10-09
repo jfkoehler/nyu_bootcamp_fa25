@@ -18,6 +18,7 @@ parts:
     - file: data_apis
     - file: html_data
     - file: hyp_testing
+    - file: regression_intro
 
   - caption: Projects
     chapters:
