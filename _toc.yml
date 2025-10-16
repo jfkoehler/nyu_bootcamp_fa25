@@ -17,7 +17,9 @@ parts:
     - file: eda_exercise
     - file: data_apis
     - file: html_data
+    
   - caption: Modeling with Python
+    chapters:
     - file: hyp_testing
     - file: optimization
 
