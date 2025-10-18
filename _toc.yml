@@ -31,6 +31,7 @@ parts:
     chapters:
     - file: homework/homework_I
     - file: homework/homework_III
+    - file: homework/regression_hw
 
   - caption: Class Notebook Solutions
     chapters:
@@ -40,8 +41,9 @@ parts:
     - file: solutions/pandas_II-solns
     - file: solutions/intro_to_plotting-solns
     - file: solutions/plotting_seaborn-solns
-    - file: solutions/data_apis-solns.ipynb
-    - file: solutions/html_data-solns.ipynb
+    - file: solutions/data_apis-solns
+    - file: solutions/html_data-solns
+    - file: solutions/optimization-solns
 
   - caption: Extras
     chapters:
