@@ -22,6 +22,7 @@ parts:
     chapters:
     - file: hyp_testing
     - file: optimization
+    - file: polynomial_models
 
   - caption: Projects
     chapters:
