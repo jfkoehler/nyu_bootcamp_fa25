@@ -484,28 +484,124 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/wages_hw.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/wage_hw.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/wages_hw.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EDUCATION</th>
+      <th>SOUTH</th>
+      <th>SEX</th>
+      <th>EXPERIENCE</th>
+      <th>UNION</th>
+      <th>WAGE</th>
+      <th>AGE</th>
+      <th>RACE</th>
+      <th>OCCUPATION</th>
+      <th>SECTOR</th>
+      <th>MARR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>no</td>
+      <td>female</td>
+      <td>21</td>
+      <td>not_member</td>
+      <td>5.10</td>
+      <td>35</td>
+      <td>Hispanic</td>
+      <td>Other</td>
+      <td>Manufacturing</td>
+      <td>Married</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>no</td>
+      <td>female</td>
+      <td>42</td>
+      <td>not_member</td>
+      <td>4.95</td>
+      <td>57</td>
+      <td>White</td>
+      <td>Other</td>
+      <td>Manufacturing</td>
+      <td>Married</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12</td>
+      <td>no</td>
+      <td>male</td>
+      <td>1</td>
+      <td>not_member</td>
+      <td>6.67</td>
+      <td>19</td>
+      <td>White</td>
+      <td>Other</td>
+      <td>Manufacturing</td>
+      <td>Unmarried</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12</td>
+      <td>no</td>
+      <td>male</td>
+      <td>4</td>
+      <td>not_member</td>
+      <td>4.00</td>
+      <td>22</td>
+      <td>White</td>
+      <td>Other</td>
+      <td>Other</td>
+      <td>Unmarried</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12</td>
+      <td>no</td>
+      <td>male</td>
+      <td>17</td>
+      <td>not_member</td>
+      <td>7.50</td>
+      <td>35</td>
+      <td>White</td>
+      <td>Other</td>
+      <td>Other</td>
+      <td>Married</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>PROBLEM 1: Splitting the data.</strong></p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> function to create a train and test dataset for all features and the target column <code class="docutils literal notranslate"><span class="pre">WAGE</span></code>.  Your test set should be comprised of 20% of the total data.</p>
