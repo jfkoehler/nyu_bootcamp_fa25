@@ -23,6 +23,7 @@ parts:
     - file: hyp_testing
     - file: optimization
     - file: polynomial_models
+    - file: practice_regression
 
   - caption: Projects
     chapters:
