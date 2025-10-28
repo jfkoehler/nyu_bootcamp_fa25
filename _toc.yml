@@ -24,6 +24,7 @@ parts:
     - file: optimization
     - file: polynomial_models
     - file: practice_regression
+    - file: knn_classification
 
   - caption: Projects
     chapters:
@@ -46,6 +47,7 @@ parts:
     - file: solutions/data_apis-solns
     - file: solutions/html_data-solns
     - file: solutions/optimization-solns
+    - file: solutions/practice_regression-solns
 
   - caption: Extras
     chapters:
