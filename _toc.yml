@@ -25,6 +25,7 @@ parts:
     - file: polynomial_models
     - file: practice_regression
     - file: knn_classification
+    - file: logistic_starter_code
 
   - caption: Projects
     chapters:
