@@ -26,6 +26,7 @@ parts:
     - file: practice_regression
     - file: knn_classification
     - file: logistic_starter_code
+    - file: classifier_evaluation_b
 
   - caption: Projects
     chapters:
