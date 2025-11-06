@@ -27,6 +27,7 @@ parts:
     - file: knn_classification
     - file: logistic_starter_code
     - file: classifier_evaluation_b
+    - file: intro_decision_tree
 
   - caption: Projects
     chapters:
