@@ -28,6 +28,7 @@ parts:
     - file: logistic_starter_code
     - file: classifier_evaluation_b
     - file: intro_decision_tree
+    - file: forests
 
   - caption: Projects
     chapters:
