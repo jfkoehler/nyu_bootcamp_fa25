@@ -29,6 +29,7 @@ parts:
     - file: classifier_evaluation_b
     - file: intro_decision_tree
     - file: forests
+    - file: boosting_inspection
 
   - caption: Projects
     chapters:
