@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to Boosting &#8212; Stern Data Bootcamp</title>
+    <title>Learning Objectives &#8212; Stern Data Bootcamp</title>
   
   
   
@@ -494,7 +494,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Boosting</h1>
+    <h1>Learning Objectives</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -504,34 +504,35 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-guide">Lesson Guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-as-an-ensemble-method">Boosting as an Ensemble Method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons-of-boosting">Pros and Cons of Boosting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pros">Pros</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cons">Cons</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Learning Objectives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-guide">Lesson Guide</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-as-an-ensemble-method">Boosting as an Ensemble Method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons-of-boosting">Pros and Cons of Boosting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros">Pros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cons">Cons</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-and-the-bias-variance-trade-off">Boosting and the Bias-Variance Trade-Off</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why">Why?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-and-the-bias-variance-trade-off">Boosting and the Bias-Variance Trade-Off</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why">Why?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">AdaBoost</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right">$<span class="math notranslate nohighlight">\( AdaBoost(X) = sign\left(\sum_{t=1}^T\alpha_t h_t(X)\right) \)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1">$<span class="math notranslate nohighlight">\( \alpha_t = \frac{1}{2}ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right) \text{where } \epsilon_t &lt; 1\)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epsilon-t-frac-text-misclassifications-t-text-observations-t">$<span class="math notranslate nohighlight">\( \epsilon_t = \frac{\text{misclassifications}_t}{\text{observations}_t} \)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-example-weights">Training Example Weights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = D_t(i) e^{-\alpha_t y_i h_t(x_i)} \)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = \frac{D_{t+1}(i)}{\sum_{i=1}^N D_{t+1}(i)}\)</span>$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">AdaBoost</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right">$<span class="math notranslate nohighlight">\( AdaBoost(X) = sign\left(\sum_{t=1}^T\alpha_t h_t(X)\right) \)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1">$<span class="math notranslate nohighlight">\( \alpha_t = \frac{1}{2}ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right) \text{where } \epsilon_t &lt; 1\)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epsilon-t-frac-text-misclassifications-t-text-observations-t">$<span class="math notranslate nohighlight">\( \epsilon_t = \frac{\text{misclassifications}_t}{\text{observations}_t} \)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-example-weights">Training Example Weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = D_t(i) e^{-\alpha_t y_i h_t(x_i)} \)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = \frac{D_{t+1}(i)}{\sum_{i=1}^N D_{t+1}(i)}\)</span>$</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-visualization">AdaBoost Visualization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-models">Gradient Boosting Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-visualization">Gradient Boosting Visualization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-difference-between-the-adaboost-and-gradient-boosting">The Difference Between the AdaBoost and Gradient Boosting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playground">Playground</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-visualization">AdaBoost Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-models">Gradient Boosting Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-visualization">Gradient Boosting Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-difference-between-the-adaboost-and-gradient-boosting">The Difference Between the AdaBoost and Gradient Boosting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#playground">Playground</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -542,13 +543,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <img src="http://imgur.com/1ZcRyrc.png" style="float: left; margin: 20px; height: 55px">
-<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-boosting">
-<h1>Introduction to Boosting<a class="headerlink" href="#introduction-to-boosting" title="Link to this heading">#</a></h1>
-<p><em>Authors: Kiefer Katovich (SF), Matt Brems (DC)</em></p>
-<hr class="docutils" />
-<section id="learning-objectives">
-<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+  <section id="learning-objectives">
+<h1>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Understand the differences between bagging and boosting.</p></li>
 <li><p>Understand how boosting is an ensemble method.</p></li>
@@ -559,7 +555,7 @@
 </ul>
 </section>
 <section id="lesson-guide">
-<h2>Lesson Guide<a class="headerlink" href="#lesson-guide" title="Link to this heading">#</a></h2>
+<h1>Lesson Guide<a class="headerlink" href="#lesson-guide" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#intro"><span class="xref myst">Boosting as an Ensemble Method</span></a></p></li>
 <li><p><a class="reference internal" href="#pros-cons"><span class="xref myst">Pros and Cons of Boosting</span></a></p></li>
@@ -579,7 +575,7 @@
 <p><a id='intro'></a></p>
 </section>
 <section id="boosting-as-an-ensemble-method">
-<h2>Boosting as an Ensemble Method<a class="headerlink" href="#boosting-as-an-ensemble-method" title="Link to this heading">#</a></h2>
+<h1>Boosting as an Ensemble Method<a class="headerlink" href="#boosting-as-an-ensemble-method" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p>Boosting is another ensemble method with a different approach to bagging. Boosting takes a weak base learner and tries to make it a strong learner by retraining it on the misclassified samples.</p>
 <ol class="arabic simple">
@@ -593,10 +589,10 @@
 <p><a id='pros-cons'></a></p>
 </section>
 <section id="pros-and-cons-of-boosting">
-<h2>Pros and Cons of Boosting<a class="headerlink" href="#pros-and-cons-of-boosting" title="Link to this heading">#</a></h2>
+<h1>Pros and Cons of Boosting<a class="headerlink" href="#pros-and-cons-of-boosting" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <section id="pros">
-<h3>Pros<a class="headerlink" href="#pros" title="Link to this heading">#</a></h3>
+<h2>Pros<a class="headerlink" href="#pros" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Achieves higher performance than bagging when the hyperparameters are properly tuned.</p></li>
 <li><p>Works equally well for classification and regression.</p></li>
@@ -605,7 +601,7 @@
 </section>
 <hr class="docutils" />
 <section id="cons">
-<h3>Cons<a class="headerlink" href="#cons" title="Link to this heading">#</a></h3>
+<h2>Cons<a class="headerlink" href="#cons" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Difficult and time consuming to properly tune hyperparameters.</p></li>
 <li><p>Cannot be parallelized like bagging (bad scalability when there are huge amounts of data).</p></li>
@@ -617,12 +613,12 @@
 </section>
 </section>
 <section id="boosting-and-the-bias-variance-trade-off">
-<h2>Boosting and the Bias-Variance Trade-Off<a class="headerlink" href="#boosting-and-the-bias-variance-trade-off" title="Link to this heading">#</a></h2>
+<h1>Boosting and the Bias-Variance Trade-Off<a class="headerlink" href="#boosting-and-the-bias-variance-trade-off" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p>Recall that <strong>bagging aims to reduce variance</strong>.</p>
 <p><strong>Boosting aims to reduce bias</strong> (and can reduce variance a bit as well)!</p>
 <section id="why">
-<h3>Why?<a class="headerlink" href="#why" title="Link to this heading">#</a></h3>
+<h2>Why?<a class="headerlink" href="#why" title="Link to this heading">#</a></h2>
 <p>The rationale/theory behind boosting is to combine <strong>many weak learners into a single strong learner.</strong></p>
 <p>Instead of using deep/full decision trees like in bagging, <strong>boosting uses shallow/high-bias base estimators.</strong></p>
 <p>Thus, each weak learner has:</p>
@@ -635,11 +631,11 @@
 </section>
 </section>
 <section id="adaboost">
-<h2>AdaBoost<a class="headerlink" href="#adaboost" title="Link to this heading">#</a></h2>
+<h1>AdaBoost<a class="headerlink" href="#adaboost" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p>AdaBoost is the original boosting algorithm. Predictions from AdaBoost follow this formula:</p>
 <section id="adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right">
-<h3>$<span class="math notranslate nohighlight">\( AdaBoost(X) = sign\left(\sum_{t=1}^T\alpha_t h_t(X)\right) \)</span>$<a class="headerlink" href="#adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right" title="Link to this heading">#</a></h3>
+<h2>$<span class="math notranslate nohighlight">\( AdaBoost(X) = sign\left(\sum_{t=1}^T\alpha_t h_t(X)\right) \)</span>$<a class="headerlink" href="#adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right" title="Link to this heading">#</a></h2>
 <p>Where:</p>
 <p><span class="math notranslate nohighlight">\(AdaBoost(X)\)</span> is the classification predictions for <span class="math notranslate nohighlight">\(y\)</span> using predictor matrix <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(T\)</span> is the set of “weak learners.”</p>
@@ -651,37 +647,37 @@
 <p>All training examples start with equal importance weighting. When we finish training a classifier, we update the importance weighting of the classifier itself, represented by alpha <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
 </section>
 <section id="alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1">
-<h3>$<span class="math notranslate nohighlight">\( \alpha_t = \frac{1}{2}ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right) \text{where } \epsilon_t &lt; 1\)</span>$<a class="headerlink" href="#alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1" title="Link to this heading">#</a></h3>
+<h2>$<span class="math notranslate nohighlight">\( \alpha_t = \frac{1}{2}ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right) \text{where } \epsilon_t &lt; 1\)</span>$<a class="headerlink" href="#alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1" title="Link to this heading">#</a></h2>
 <p>Where <span class="math notranslate nohighlight">\(\epsilon_t\)</span> is the misclassification rate for the current classifier:</p>
 </section>
 <section id="epsilon-t-frac-text-misclassifications-t-text-observations-t">
-<h3>$<span class="math notranslate nohighlight">\( \epsilon_t = \frac{\text{misclassifications}_t}{\text{observations}_t} \)</span>$<a class="headerlink" href="#epsilon-t-frac-text-misclassifications-t-text-observations-t" title="Link to this heading">#</a></h3>
+<h2>$<span class="math notranslate nohighlight">\( \epsilon_t = \frac{\text{misclassifications}_t}{\text{observations}_t} \)</span>$<a class="headerlink" href="#epsilon-t-frac-text-misclassifications-t-text-observations-t" title="Link to this heading">#</a></h2>
 <p>As iterations continue, <strong>examples that are difficult to predict receive ever-increasing influence</strong>. Each subsequent weak learner is thereby forced to concentrate on the examples that are missed by the previous ones in the sequence.</p>
 <p><a id='ex-weights'></a></p>
 </section>
 <section id="training-example-weights">
-<h3>Training Example Weights<a class="headerlink" href="#training-example-weights" title="Link to this heading">#</a></h3>
+<h2>Training Example Weights<a class="headerlink" href="#training-example-weights" title="Link to this heading">#</a></h2>
 <p>AdaBoost sets up a weight vector on the observations, denoted as <span class="math notranslate nohighlight">\(D_t\)</span> where <span class="math notranslate nohighlight">\(t\)</span> is the current model iteration. <span class="math notranslate nohighlight">\(D_t\)</span> is a probability distribution that determines how likely it is that a given observation will be selected as part of the training set for the current estimator.</p>
 <p>The <span class="math notranslate nohighlight">\(\alpha\)</span> weighting of the last-fit estimator is used in the equation for the weighting distribution. The update equation is:</p>
 </section>
 <section id="d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i">
-<h3>$<span class="math notranslate nohighlight">\( D_{t+1}(i) = D_t(i) e^{-\alpha_t y_i h_t(x_i)} \)</span>$<a class="headerlink" href="#d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i" title="Link to this heading">#</a></h3>
+<h2>$<span class="math notranslate nohighlight">\( D_{t+1}(i) = D_t(i) e^{-\alpha_t y_i h_t(x_i)} \)</span>$<a class="headerlink" href="#d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i" title="Link to this heading">#</a></h2>
 <p>Where <span class="math notranslate nohighlight">\(i\)</span> is the vector of observation indices and <span class="math notranslate nohighlight">\(x_i\)</span> is the observation at the index, <span class="math notranslate nohighlight">\(y_i\)</span> is the target.</p>
 <p><span class="math notranslate nohighlight">\(h_t\)</span> is the previous model fit in the boosting chain.</p>
 <p>Lastly, we’ll divide the weights by the sum of weights to normalize them, ensuring that they sum to one and form a probability distribution:</p>
 </section>
 <section id="d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i">
-<h3>$<span class="math notranslate nohighlight">\( D_{t+1}(i) = \frac{D_{t+1}(i)}{\sum_{i=1}^N D_{t+1}(i)}\)</span>$<a class="headerlink" href="#d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i" title="Link to this heading">#</a></h3>
+<h2>$<span class="math notranslate nohighlight">\( D_{t+1}(i) = \frac{D_{t+1}(i)}{\sum_{i=1}^N D_{t+1}(i)}\)</span>$<a class="headerlink" href="#d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i" title="Link to this heading">#</a></h2>
 <p><a id='adaboost-viz'></a></p>
 </section>
 </section>
 <section id="adaboost-visualization">
-<h2>AdaBoost Visualization<a class="headerlink" href="#adaboost-visualization" title="Link to this heading">#</a></h2>
+<h1>AdaBoost Visualization<a class="headerlink" href="#adaboost-visualization" title="Link to this heading">#</a></h1>
 <p><img alt="boostvsbag" src="images/adaboost-viz.png" /></p>
 <p><a id='gradient'></a></p>
 </section>
 <section id="gradient-boosting-models">
-<h2>Gradient Boosting Models<a class="headerlink" href="#gradient-boosting-models" title="Link to this heading">#</a></h2>
+<h1>Gradient Boosting Models<a class="headerlink" href="#gradient-boosting-models" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p>Gradient boosting classifiers are a generalization of boosting to arbitrary, differentiable loss functions. The intuition behind this mechanism is to:</p>
 <ol class="arabic simple">
@@ -709,12 +705,12 @@
 <p><a id='gboost-viz'></a></p>
 </section>
 <section id="gradient-boosting-visualization">
-<h2>Gradient Boosting Visualization<a class="headerlink" href="#gradient-boosting-visualization" title="Link to this heading">#</a></h2>
+<h1>Gradient Boosting Visualization<a class="headerlink" href="#gradient-boosting-visualization" title="Link to this heading">#</a></h1>
 <p><img alt="boostvsbag" src="images/gboost-viz.png" /></p>
 <p><a id='the-difference-between-the-adaboost-and-gradient-boosting'></a></p>
 </section>
 <section id="the-difference-between-the-adaboost-and-gradient-boosting">
-<h2>The Difference Between the AdaBoost and Gradient Boosting<a class="headerlink" href="#the-difference-between-the-adaboost-and-gradient-boosting" title="Link to this heading">#</a></h2>
+<h1>The Difference Between the AdaBoost and Gradient Boosting<a class="headerlink" href="#the-difference-between-the-adaboost-and-gradient-boosting" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <ul class="simple">
 <li><p>AdaBoost is about reweighting the preceding model’s errors in subsequent iterations.</p></li>
@@ -722,7 +718,7 @@
 </ul>
 </section>
 <section id="playground">
-<h2>Playground<a class="headerlink" href="#playground" title="Link to this heading">#</a></h2>
+<h1>Playground<a class="headerlink" href="#playground" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p>Let’s practice boosting in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
 <div class="cell docutils container">
@@ -1601,7 +1597,7 @@ memory usage: 17.1 KB
 <p><a id='resources'></a></p>
 </section>
 <section id="additional-resources">
-<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<h1>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Random_forest">Random Forest on Wikipedia</a></p></li>
@@ -1616,7 +1612,6 @@ memory usage: 17.1 KB
 <li><p>A Lighter <a class="reference external" href="http://www.ccs.neu.edu/home/vip/teach/MLcourse/4_boosting/slides/gradient_boosting.pdf">Math Introduction</a> to AdaBoosting and Gradient Boosting (h/t Charlie)</p></li>
 <li><p>A <a class="reference external" href="https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/">Walk Through</a> on Tuning Gradient Boosting Models (h/t Sheena)</p></li>
 </ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1666,34 +1661,35 @@ memory usage: 17.1 KB
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-guide">Lesson Guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-as-an-ensemble-method">Boosting as an Ensemble Method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons-of-boosting">Pros and Cons of Boosting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pros">Pros</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cons">Cons</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Learning Objectives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-guide">Lesson Guide</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-as-an-ensemble-method">Boosting as an Ensemble Method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons-of-boosting">Pros and Cons of Boosting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros">Pros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cons">Cons</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-and-the-bias-variance-trade-off">Boosting and the Bias-Variance Trade-Off</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why">Why?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-and-the-bias-variance-trade-off">Boosting and the Bias-Variance Trade-Off</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why">Why?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">AdaBoost</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right">$<span class="math notranslate nohighlight">\( AdaBoost(X) = sign\left(\sum_{t=1}^T\alpha_t h_t(X)\right) \)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1">$<span class="math notranslate nohighlight">\( \alpha_t = \frac{1}{2}ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right) \text{where } \epsilon_t &lt; 1\)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epsilon-t-frac-text-misclassifications-t-text-observations-t">$<span class="math notranslate nohighlight">\( \epsilon_t = \frac{\text{misclassifications}_t}{\text{observations}_t} \)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-example-weights">Training Example Weights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = D_t(i) e^{-\alpha_t y_i h_t(x_i)} \)</span>$</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = \frac{D_{t+1}(i)}{\sum_{i=1}^N D_{t+1}(i)}\)</span>$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">AdaBoost</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-x-sign-left-sum-t-1-t-alpha-t-h-t-x-right">$<span class="math notranslate nohighlight">\( AdaBoost(X) = sign\left(\sum_{t=1}^T\alpha_t h_t(X)\right) \)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-t-frac-1-2-ln-left-frac-1-epsilon-t-epsilon-t-right-text-where-epsilon-t-1">$<span class="math notranslate nohighlight">\( \alpha_t = \frac{1}{2}ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right) \text{where } \epsilon_t &lt; 1\)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epsilon-t-frac-text-misclassifications-t-text-observations-t">$<span class="math notranslate nohighlight">\( \epsilon_t = \frac{\text{misclassifications}_t}{\text{observations}_t} \)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-example-weights">Training Example Weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-d-t-i-e-alpha-t-y-i-h-t-x-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = D_t(i) e^{-\alpha_t y_i h_t(x_i)} \)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-t-1-i-frac-d-t-1-i-sum-i-1-n-d-t-1-i">$<span class="math notranslate nohighlight">\( D_{t+1}(i) = \frac{D_{t+1}(i)}{\sum_{i=1}^N D_{t+1}(i)}\)</span>$</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-visualization">AdaBoost Visualization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-models">Gradient Boosting Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-visualization">Gradient Boosting Visualization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-difference-between-the-adaboost-and-gradient-boosting">The Difference Between the AdaBoost and Gradient Boosting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playground">Playground</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost-visualization">AdaBoost Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-models">Gradient Boosting Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-visualization">Gradient Boosting Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-difference-between-the-adaboost-and-gradient-boosting">The Difference Between the AdaBoost and Gradient Boosting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#playground">Playground</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
