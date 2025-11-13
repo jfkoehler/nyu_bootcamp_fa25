@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Bootcamp &#8212; Stern Data Bootcamp</title>
+    <title>Boosted Ensembles &#8212; Stern Data Bootcamp</title>
   
   
   
@@ -60,12 +60,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'boosting_inspection';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installations and Introduction to your Terminal" href="intro_terminal.html" />
+    <link rel="next" title="Midterm Project" href="projects/midterm.html" />
+    <link rel="prev" title="Random Forests" href="forests.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -117,8 +116,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -138,7 +135,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="syllabus.html">
   
   
   
@@ -165,8 +162,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus.html">
                     Data Bootcamp
                 </a>
             </li>
@@ -195,7 +192,7 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling with Python</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hyp_testing.html">Inference and Hypothesis Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimization.html">Introduction to Linear Regression and Linear Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="polynomial_models.html">Model Complexity and Evaluation</a></li>
@@ -235,7 +232,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="boosting_inspection.html">Boosted Ensembles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Boosted Ensembles</a></li>
 
 
 
@@ -341,7 +338,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/syllabus.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/boosting_inspection.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -389,7 +386,7 @@
       
       
       
-      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fsyllabus.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fboosting_inspection.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -419,7 +416,7 @@
       
       
       
-      <li><a href="_sources/syllabus.ipynb" target="_blank"
+      <li><a href="_sources/boosting_inspection.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -495,7 +492,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Bootcamp</h1>
+    <h1>Boosted Ensembles</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -505,17 +502,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Bootcamp</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-and-ta">Instructor and TA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-content">Course Content</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables-and-grades">Deliverables and grades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-work-habits">Recommended work habits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies">Policies</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outline">Course Outline</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Boosted Ensembles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-models">Gradient Boosted Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-boosted-models">Comparing Boosted Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-results">Inspecting Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">PROBLEM</a></li>
 </ul>
 </li>
 </ul>
@@ -530,179 +521,457 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="data-bootcamp">
-<h1>Data Bootcamp<a class="headerlink" href="#data-bootcamp" title="Link to this heading">#</a></h1>
-<p>Data Bootcamp is about nuts and bolts data analysis. You will learn how to analyze economic and business data and enough about computer programming to work with it efficiently.
-We will use Python, a popular high-level computer language that is widely used in finance, consulting, technology, and other parts of the business world. “High-level” means it is less painful than most (the hard work is being done by the language), but it is a serious language with extensive capabilities.</p>
-<p>“Data analysis” means descriptions that summarize data in ways that are helpful and informative. “Bootcamp” is a reminder that expertise takes work. Don’t worry, it’s worth it. You will be more valuable to current and future employers. And you will be able to do things more effectively than friends who rely on Excel.</p>
-<section id="instructor-and-ta">
-<h2>Instructor and TA<a class="headerlink" href="#instructor-and-ta" title="Link to this heading">#</a></h2>
-<p><strong>Instructor</strong>: Jacob Koehler, PhD</p>
-<ul class="simple">
-<li><p>Email: <a class="reference external" href="mailto:jfk11&#37;&#52;&#48;nyu&#46;edu">jfk11<span>&#64;</span>nyu<span>&#46;</span>edu</a></p></li>
-<li><p>Office Hours: Tuesdays 5pm - 6pm Room KMC 7-191 and <a class="reference external" href="https://nyu.zoom.us/j/95710250503">Zoom</a></p></li>
-</ul>
-<p><strong>Teaching Assistant</strong>: Anusha Khandupar</p>
-<ul class="simple">
-<li><p>Email: <a class="reference external" href="mailto:ak10786&#37;&#52;&#48;stern&#46;nyu&#46;edu">ak10786<span>&#64;</span>stern<span>&#46;</span>nyu<span>&#46;</span>edu</a></p></li>
-<li><p>Office Hours: Fridays 11am - 12pm on <a class="reference internal" href="#"><span class="xref myst">Zoom</span></a></p></li>
-</ul>
+  <section id="boosted-ensembles">
+<h1>Boosted Ensembles<a class="headerlink" href="#boosted-ensembles" title="Link to this heading">#</a></h1>
+<p>Continuing on with our work with classifiers and ensembles today we introduce boosted models, a powerful collection of tree based models that learn in sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install xgboost</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
-<p>There are no prerequisites. We welcome students with no prior programming experience and have designed the course with them in mind. What you need is the courage to take on a challenge and the patience to fix computer programs that don’t work. That’s a regular occurrence, even for experts.</p>
+<section id="gradient-boosted-models">
+<h1>Gradient Boosted Models<a class="headerlink" href="#gradient-boosted-models" title="Link to this heading">#</a></h1>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Ensemble_Boosting.svg/2880px-Ensemble_Boosting.svg.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cancer</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;target&#39;</span><span class="p">),</span> <span class="n">cancer</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="getting-help">
-<h2>Getting help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
-<p>This course has a strong support system to help you when you run into a problem – and anyone who codes runs into programs runs into problems. We have myself and a teaching fellow.</p>
-<p>You can also ask your classmates for help! You can post questions on our discussion group (on SLACK). The teaching fellow and I will monitor the discussion group.</p>
-<p>The bottom line: If you’re stuck, ask for help.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://join.slack.com/t/bootcampfall25/shared_invite/zt-3cdlpysph-gL54e~d3X5nZT8OjDDRaaw">SLACK</a></p></li>
-</ul>
-</section>
-<section id="course-content">
-<h2>Course Content<a class="headerlink" href="#course-content" title="Link to this heading">#</a></h2>
-<p>I will continue building out our course book as we go, but in the first half of the course I will also be heavily referencing and taking directly from the text below:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://jfkoehler.github.io/nyu_bootcamp_fa25">Fall 2023 Book</a></p></li>
-<li><p><a class="reference external" href="https://NYU.Data-Bootcamp.com">Original Version of Text</a></p></li>
-</ul>
-<p>All assignments will be distributed and collected using Brightspace, and class recordings will be available there as well.</p>
-</section>
-<section id="deliverables-and-grades">
-<h2>Deliverables and grades<a class="headerlink" href="#deliverables-and-grades" title="Link to this heading">#</a></h2>
-<p>This course divides naturally into two parts. The first part is an introduction to those aspects of the Python programming language useful for data analysis. We cover this material with as many applications to real data as we can think of. The second part covers advanced topics and ends with a project of your own. The goal is for you to have a piece of work you can show potential employers to illustrate your quantitative skill set. Both parts include a number of graded deliverables. The idea is to do some work all the time rather than lots of work once in a while.</p>
-<p>Graded work includes:</p>
-<ul class="simple">
-<li><p>Code Practice: There are eight assignments over the course of the semester. They are a great way to develop your skills and come to the following class with questions about what you may not yet understand.
-Midterm Project. Midway through the semester, you will be asked to derive unique insight from a dataset of your creation/construction.</p></li>
-<li><p>Final Project: We work our way up to the project one step at a time, starting with idea generation and ending with a professional piece of data collection and analysis that you can share with potential employers. We have found that the quality of final project had a surprisingly low correlation to previous programming experience. A little thought and effort go a long way in creating an interesting project.</p></li>
-</ul>
-<p>Due dates are posted on the course brightspace site.</p>
-<p>Dates are not negotiable. Anything handed in late will get a grade of zero.</p>
-<p>All your work should be clean and professional. Your grade depends on it.</p>
-<p>Final grades will be computed from</p>
-<ul class="simple">
-<li><p>Code practice		40%</p></li>
-<li><p>Midterm project		15%</p></li>
-<li><p>Final Project		15%</p></li>
-<li><p>In Class Activities and Participation		30%</p></li>
-</ul>
-<p>Final grades are subject to the Stern grading curve, where the approximately 35% of students should receive an A or A-. If you make a good-faith effort, we expect it to be hard to get less than a B. We are the sole judges of what constitutes good-faith effort.</p>
-</section>
-<section id="recommended-work-habits">
-<h2>Recommended work habits<a class="headerlink" href="#recommended-work-habits" title="Link to this heading">#</a></h2>
-<p>Python is not something you can learn from reading a book and attending lectures. You need to write programs – the more the better – to understand how they work. Think about how you’d learn to play basketball or soccer; reading and listening to lectures aren’t enough, you need to do it. We’ll do a lot of programming in class, but it’s essential that you follow up outside of class.
-Here’s how.</p>
-<p>Write &amp; Review. After each topic, we recommend you:</p>
-<ul class="simple">
-<li><p>Write: Shortly after class, write down everything you remember without looking at your notes or the book. Note things you don’t understand.</p></li>
-<li><p>Review: Read the relevant section of the book. Fill in the gaps. Ask for help with anything you still don’t understand.</p></li>
-<li><p>Practice. For the first half of the term, each topic has an assignment that covers the same material. We suggest you do them, even the ones that aren’t graded.</p></li>
-</ul>
-<p>We also recommend you practice coding whenever you have the chance. Start small. Write short programs to do anything that crosses your mind. Use Python to do things you would ordinarily do in Excel. Try doing assignments from other courses in Python. At first this will be more work than doing it by hand or in Excel, but once you have some experience it will typically be easier in Python. Even if that’s not the case, the practice will expand your skill set.</p>
-</section>
-<section id="policies">
-<h2>Policies<a class="headerlink" href="#policies" title="Link to this heading">#</a></h2>
-<p>Ethics, disabilities, and many other things are governed by NYU and Stern policies. If you have questions about them, please ask.
-On graded work: You may discuss assignments with anyone (in fact, we encourage it), but anything you submit, including your code, should be your own. Exams should be entirely your own work.
-On disabilities: If you have a qualified disability that requires academic accommodation, please contact the Moses Center for Students with Disabilities (CSD, 212-998-4980) and ask them to send us a letter verifying your registration and outlining the accommodation they recommend. If you need to take an exam at the CSD, you must submit a completed Exam Accommodations Form to them at least one week prior to the scheduled exam time to be assured accommodation.</p>
-</section>
-</section>
-<section id="course-outline">
-<h1>Course Outline<a class="headerlink" href="#course-outline" title="Link to this heading">#</a></h1>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Week</strong></p></th>
-<th class="head"><p><strong>Topics</strong></p></th>
-<th class="head"><p><strong>Assignment</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Introduction to Python and Coding Basics</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>1</p></td>
-<td><p>Installs and Setup, Bash Basics, Git and Github, Variables, Collections, Control Flow</p></td>
-<td><p><em>Homework I</em></p></td>
-</tr>
-<tr class="row-even"><td><p>2</p></td>
-<td><p>NumPy and Pandas</p></td>
-<td><p><em>Homework II</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
-<td><p>Accessing Data: API’s and Webscraping</p></td>
-<td><p><em>Homework III</em></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Working with Data</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td><p>Pandas and Plotting</p></td>
-<td><p><em>Homework IV</em></p></td>
-</tr>
-<tr class="row-even"><td><p>5</p></td>
-<td><p>Probability and Statistics</p></td>
-<td><p><strong>Midterm Assigned</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Predictive Models with Data</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>6</p></td>
-<td><p>Linear Regression and Modeling Introduction</p></td>
-<td><p><em>Homework V</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>7</p></td>
-<td><p>Classification: Logistic Regression and KNN</p></td>
-<td><p><em>Homework VI</em></p></td>
-</tr>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>Unsupervised Learning: Clustering</p></td>
-<td><p><em>Homework VII</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>9</p></td>
-<td><p>Time Series</p></td>
-<td><p><em>Homework VIII</em></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Artificial Neural Networks</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>10</p></td>
-<td><p>ANN’s for Regression and Classification</p></td>
-<td><p><em>Homework IX</em></p></td>
-</tr>
-<tr class="row-even"><td><p>11</p></td>
-<td><p>ANN’s for Text and Language</p></td>
-<td><p><em>Homework X</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>12</p></td>
-<td><p>Streamlit and Deployment</p></td>
-<td><p><em>Final Project Proposal</em></p></td>
-</tr>
-<tr class="row-even"><td><p>13</p></td>
-<td><p>Final Topics</p></td>
-<td><p><em>Final Project</em></p></td>
-</tr>
-</tbody>
+<section id="comparing-boosted-models">
+<h1>Comparing Boosted Models<a class="headerlink" href="#comparing-boosted-models" title="Link to this heading">#</a></h1>
+<p>Returning to the food marketing data from last class, how does a boosted model perform?  Is this worth using in targeting customers and what do you think is driving responses to the advertisement?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">food_marketing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa25/refs/heads/main/data/food_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">food_marketing</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Year_Birth</th>
+      <th>Education</th>
+      <th>Marital_Status</th>
+      <th>Income</th>
+      <th>Kidhome</th>
+      <th>Teenhome</th>
+      <th>Dt_Customer</th>
+      <th>Recency</th>
+      <th>MntWines</th>
+      <th>MntFruits</th>
+      <th>MntMeatProducts</th>
+      <th>MntFishProducts</th>
+      <th>MntSweetProducts</th>
+      <th>MntGoldProds</th>
+      <th>NumDealsPurchases</th>
+      <th>NumWebPurchases</th>
+      <th>NumCatalogPurchases</th>
+      <th>NumStorePurchases</th>
+      <th>NumWebVisitsMonth</th>
+      <th>AcceptedCmp3</th>
+      <th>AcceptedCmp4</th>
+      <th>AcceptedCmp5</th>
+      <th>AcceptedCmp1</th>
+      <th>AcceptedCmp2</th>
+      <th>Complain</th>
+      <th>Z_CostContact</th>
+      <th>Z_Revenue</th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5524</td>
+      <td>1957</td>
+      <td>Graduation</td>
+      <td>Single</td>
+      <td>58138.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2012-09-04</td>
+      <td>58</td>
+      <td>635</td>
+      <td>88</td>
+      <td>546</td>
+      <td>172</td>
+      <td>88</td>
+      <td>88</td>
+      <td>3</td>
+      <td>8</td>
+      <td>10</td>
+      <td>4</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2174</td>
+      <td>1954</td>
+      <td>Graduation</td>
+      <td>Single</td>
+      <td>46344.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2014-03-08</td>
+      <td>38</td>
+      <td>11</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4141</td>
+      <td>1965</td>
+      <td>Graduation</td>
+      <td>Together</td>
+      <td>71613.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2013-08-21</td>
+      <td>26</td>
+      <td>426</td>
+      <td>49</td>
+      <td>127</td>
+      <td>111</td>
+      <td>21</td>
+      <td>42</td>
+      <td>1</td>
+      <td>8</td>
+      <td>2</td>
+      <td>10</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6182</td>
+      <td>1984</td>
+      <td>Graduation</td>
+      <td>Together</td>
+      <td>26646.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2014-02-10</td>
+      <td>26</td>
+      <td>11</td>
+      <td>4</td>
+      <td>20</td>
+      <td>10</td>
+      <td>3</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5324</td>
+      <td>1981</td>
+      <td>PhD</td>
+      <td>Married</td>
+      <td>58293.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2014-01-19</td>
+      <td>94</td>
+      <td>173</td>
+      <td>43</td>
+      <td>118</td>
+      <td>46</td>
+      <td>27</td>
+      <td>15</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3</td>
+      <td>6</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+  </tbody>
 </table>
+</div></div></div>
 </div>
-<div class="toctree-wrapper compound">
+</section>
+<section id="inspecting-results">
+<h1>Inspecting Results<a class="headerlink" href="#inspecting-results" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/partial_dependence.html">Partial Dependence Plots</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">Permutation Feature Importance</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">PartialDependenceDisplay</span><span class="p">,</span> <span class="n">permutation_importance</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
+<section id="problem">
+<h2>PROBLEM<a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
+<p>Below, a dataset around an email campaign for sales is loaded and displayed.  Explore the description of the task <a class="reference external" href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html">here</a>.  Consider a strategy for model building and evaluation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install scikit-uplift</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklift.datasets</span> <span class="kn">import</span> <span class="n">fetch_hillstrom</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_hillstrom</span><span class="p">(</span><span class="n">target_col</span><span class="o">=</span><span class="s1">&#39;conversion&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">treatment</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">treatment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>recency</th>
+      <th>history_segment</th>
+      <th>history</th>
+      <th>mens</th>
+      <th>womens</th>
+      <th>zip_code</th>
+      <th>newbie</th>
+      <th>channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>2) $100 - $200</td>
+      <td>142.44</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Surburban</td>
+      <td>0</td>
+      <td>Phone</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>3) $200 - $350</td>
+      <td>329.08</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Rural</td>
+      <td>1</td>
+      <td>Web</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>2) $100 - $200</td>
+      <td>180.65</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Surburban</td>
+      <td>1</td>
+      <td>Web</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9</td>
+      <td>5) $500 - $750</td>
+      <td>675.83</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Rural</td>
+      <td>1</td>
+      <td>Web</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>1) $0 - $100</td>
+      <td>45.34</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Urban</td>
+      <td>0</td>
+      <td>Web</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+1    0
+2    0
+3    0
+4    0
+Name: conversion, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treatment</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Womens E-Mail
+1        No E-Mail
+2    Womens E-Mail
+3      Mens E-Mail
+4    Womens E-Mail
+Name: segment, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -735,12 +1004,21 @@ On disabilities: If you have a qualified disability that requires academic accom
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="forests.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Random Forests</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="intro_terminal.html"
+       href="projects/midterm.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Installations and Introduction to your Terminal</p>
+        <p class="prev-next-title">Midterm Project</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -761,17 +1039,11 @@ On disabilities: If you have a qualified disability that requires academic accom
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Bootcamp</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-and-ta">Instructor and TA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-content">Course Content</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables-and-grades">Deliverables and grades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-work-habits">Recommended work habits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies">Policies</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outline">Course Outline</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Boosted Ensembles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-models">Gradient Boosted Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-boosted-models">Comparing Boosted Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-results">Inspecting Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">PROBLEM</a></li>
 </ul>
 </li>
 </ul>
