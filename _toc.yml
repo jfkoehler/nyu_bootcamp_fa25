@@ -40,6 +40,7 @@ parts:
     - file: homework/homework_I
     - file: homework/homework_III
     - file: homework/regression_hw
+    - file: homework/homework_VI
 
   - caption: Class Notebook Solutions
     chapters:
