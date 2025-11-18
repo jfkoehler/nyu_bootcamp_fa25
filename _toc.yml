@@ -30,6 +30,8 @@ parts:
     - file: intro_decision_tree
     - file: forests
     - file: boosting_inspection
+    - file: unsupervised_learning
+    - file: pca
 
   - caption: Projects
     chapters:
