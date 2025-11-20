@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'unsupervised_learning';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PCA: A Brief Introduction" href="pca.html" />
-    <link rel="prev" title="Boosted Ensembles" href="boosting_inspection.html" />
+    <link rel="next" title="Midterm Project" href="projects/midterm.html" />
+    <link rel="prev" title="PCA: A Brief Introduction" href="pca.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -238,9 +238,9 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="pca.html">PCA: A Brief Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Unsupervised Learning</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="pca.html">PCA: A Brief Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -616,6 +616,31 @@ Where:</p>
 <p><span class="math notranslate nohighlight">\(b_i\)</span> = Separation: Mean distance from point <span class="math notranslate nohighlight">\(x_i\)</span> to all points in the next nearest cluster.
 Use scikit-learn: <code class="docutils literal notranslate"><span class="pre">metrics.silhouette_score(X_scaled,</span> <span class="pre">labels)</span></code>.</p>
 <p>Higher silhouette score is better!¶</p>
+<p><strong>PROBLEM: Customer Segmentation</strong></p>
+<p>Using the article <a class="reference external" href="https://www.semanticscholar.org/paper/Data-mining-for-the-online-retail-industry%3A-A-case-Chen-Sain/e43a5a90fa33d419df42e485099f8f08badf2149">here</a> and associated dataset loaded below, your goal is to apply unsupervised learning to a problem in the retail industry.  Complete the form <a class="reference external" href="https://forms.gle/QNxwRQUxhQbhjJuH9">here</a> as you work through the problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ucimlrepo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ucimlrepo</span> <span class="kn">import</span> <span class="n">fetch_ucirepo</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># online_retail = fetch_ucirepo(id=352) </span>
+<span class="c1"># X = online_retail.data.features</span>
+<span class="c1"># X.head()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="hidden-markov-models">
 <h2>Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Link to this heading">#</a></h2>
@@ -1273,20 +1298,20 @@ Model is not converging.  Current: -783.244336836378 is not greater than -783.24
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="boosting_inspection.html"
+       href="pca.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Boosted Ensembles</p>
+        <p class="prev-next-title">PCA: A Brief Introduction</p>
       </div>
     </a>
     <a class="right-next"
-       href="pca.html"
+       href="projects/midterm.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PCA: A Brief Introduction</p>
+        <p class="prev-next-title">Midterm Project</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
