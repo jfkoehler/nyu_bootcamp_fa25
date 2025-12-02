@@ -32,8 +32,11 @@ parts:
     - file: boosting_inspection
     - file: pca
     - file: unsupervised_learning
-    
 
+  - caption: Artificial Neural Networks
+    chapters:
+    - file: intro_to_pytorch
+    
   - caption: Projects
     chapters:
     - file: projects/midterm
