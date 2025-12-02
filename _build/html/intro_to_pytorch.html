@@ -512,9 +512,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-revisited">Regression Revisited</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-models-revisited">Linear Models Revisited</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-functions">Minimizing Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-functions">Minimizing Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-linear"><code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-visual-example">A Visual Example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-predictions">Making Predictions</a><ul class="nav section-nav flex-column">
@@ -542,6 +544,15 @@
 <li><p>Understand connections between linear models and neural networks</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">pytorch</span></code> to build basic multilayer perceptron models for regression and classification</p></li>
 </ul>
+<p><strong>NEXT CLASS!!!</strong></p>
+<p>NYU faculty, administrators, staff, and students may apply for a WRDS account. Non-PhD students can request a temporary Research Assistant account when working with faculty.</p>
+<ul class="simple">
+<li><p>Visit <a class="reference external" href="https://wrds-www.wharton.upenn.edu/">Wharton Research Database Services</a></p></li>
+<li><p>Click the Register button.</p></li>
+<li><p>Complete the form, read the Terms of Use, and submit.</p></li>
+<li><p>The NYU Representative for WRDS will review your application and affiliation.</p></li>
+<li><p>Upon approval, WRDS will email instructions for setting your password.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -553,8 +564,6 @@
 </div>
 </div>
 <p>Please use the form <a class="reference external" href="https://forms.gle/dHk5F14FYBJwWXtg6">here</a> to discuss your time series problem and final project ideas.</p>
-<section id="regression-revisited">
-<h2>Regression Revisited<a class="headerlink" href="#regression-revisited" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -564,222 +573,6 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x15b7deed0&gt;]
-</pre></div>
-</div>
-<img alt="_images/f7cd654aca1da29e13e9a73ce976914b3907a7e7c2716c0a1a799e91387418c3.png" src="_images/f7cd654aca1da29e13e9a73ce976914b3907a7e7c2716c0a1a799e91387418c3.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)</span>
-<span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([500, 1])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-3.0000, -2.9880, -2.9760, -2.9639, -2.9519, -2.9399, -2.9279, -2.9158,
-        -2.9038, -2.8918, -2.8798, -2.8677, -2.8557, -2.8437, -2.8317, -2.8196,
-        -2.8076, -2.7956, -2.7836, -2.7715, -2.7595, -2.7475, -2.7355, -2.7234,
-        -2.7114, -2.6994, -2.6874, -2.6754, -2.6633, -2.6513, -2.6393, -2.6273,
-        -2.6152, -2.6032, -2.5912, -2.5792, -2.5671, -2.5551, -2.5431, -2.5311,
-        -2.5190, -2.5070, -2.4950, -2.4830, -2.4709, -2.4589, -2.4469, -2.4349,
-        -2.4228, -2.4108, -2.3988, -2.3868, -2.3747, -2.3627, -2.3507, -2.3387,
-        -2.3267, -2.3146, -2.3026, -2.2906, -2.2786, -2.2665, -2.2545, -2.2425,
-        -2.2305, -2.2184, -2.2064, -2.1944, -2.1824, -2.1703, -2.1583, -2.1463,
-        -2.1343, -2.1222, -2.1102, -2.0982, -2.0862, -2.0741, -2.0621, -2.0501,
-        -2.0381, -2.0261, -2.0140, -2.0020, -1.9900, -1.9780, -1.9659, -1.9539,
-        -1.9419, -1.9299, -1.9178, -1.9058, -1.8938, -1.8818, -1.8697, -1.8577,
-        -1.8457, -1.8337, -1.8216, -1.8096, -1.7976, -1.7856, -1.7735, -1.7615,
-        -1.7495, -1.7375, -1.7255, -1.7134, -1.7014, -1.6894, -1.6774, -1.6653,
-        -1.6533, -1.6413, -1.6293, -1.6172, -1.6052, -1.5932, -1.5812, -1.5691,
-        -1.5571, -1.5451, -1.5331, -1.5210, -1.5090, -1.4970, -1.4850, -1.4729,
-        -1.4609, -1.4489, -1.4369, -1.4248, -1.4128, -1.4008, -1.3888, -1.3768,
-        -1.3647, -1.3527, -1.3407, -1.3287, -1.3166, -1.3046, -1.2926, -1.2806,
-        -1.2685, -1.2565, -1.2445, -1.2325, -1.2204, -1.2084, -1.1964, -1.1844,
-        -1.1723, -1.1603, -1.1483, -1.1363, -1.1242, -1.1122, -1.1002, -1.0882,
-        -1.0762, -1.0641, -1.0521, -1.0401, -1.0281, -1.0160, -1.0040, -0.9920,
-        -0.9800, -0.9679, -0.9559, -0.9439, -0.9319, -0.9198, -0.9078, -0.8958,
-        -0.8838, -0.8717, -0.8597, -0.8477, -0.8357, -0.8236, -0.8116, -0.7996,
-        -0.7876, -0.7756, -0.7635, -0.7515, -0.7395, -0.7275, -0.7154, -0.7034,
-        -0.6914, -0.6794, -0.6673, -0.6553, -0.6433, -0.6313, -0.6192, -0.6072,
-        -0.5952, -0.5832, -0.5711, -0.5591, -0.5471, -0.5351, -0.5230, -0.5110,
-        -0.4990, -0.4870, -0.4750, -0.4629, -0.4509, -0.4389, -0.4269, -0.4148,
-        -0.4028, -0.3908, -0.3788, -0.3667, -0.3547, -0.3427, -0.3307, -0.3186,
-        -0.3066, -0.2946, -0.2826, -0.2705, -0.2585, -0.2465, -0.2345, -0.2224,
-        -0.2104, -0.1984, -0.1864, -0.1743, -0.1623, -0.1503, -0.1383, -0.1263,
-        -0.1142, -0.1022, -0.0902, -0.0782, -0.0661, -0.0541, -0.0421, -0.0301,
-        -0.0180, -0.0060,  0.0060,  0.0180,  0.0301,  0.0421,  0.0541,  0.0661,
-         0.0782,  0.0902,  0.1022,  0.1142,  0.1263,  0.1383,  0.1503,  0.1623,
-         0.1743,  0.1864,  0.1984,  0.2104,  0.2224,  0.2345,  0.2465,  0.2585,
-         0.2705,  0.2826,  0.2946,  0.3066,  0.3186,  0.3307,  0.3427,  0.3547,
-         0.3667,  0.3788,  0.3908,  0.4028,  0.4148,  0.4269,  0.4389,  0.4509,
-         0.4629,  0.4750,  0.4870,  0.4990,  0.5110,  0.5230,  0.5351,  0.5471,
-         0.5591,  0.5711,  0.5832,  0.5952,  0.6072,  0.6192,  0.6313,  0.6433,
-         0.6553,  0.6673,  0.6794,  0.6914,  0.7034,  0.7154,  0.7275,  0.7395,
-         0.7515,  0.7635,  0.7756,  0.7876,  0.7996,  0.8116,  0.8236,  0.8357,
-         0.8477,  0.8597,  0.8717,  0.8838,  0.8958,  0.9078,  0.9198,  0.9319,
-         0.9439,  0.9559,  0.9679,  0.9800,  0.9920,  1.0040,  1.0160,  1.0281,
-         1.0401,  1.0521,  1.0641,  1.0762,  1.0882,  1.1002,  1.1122,  1.1242,
-         1.1363,  1.1483,  1.1603,  1.1723,  1.1844,  1.1964,  1.2084,  1.2204,
-         1.2325,  1.2445,  1.2565,  1.2685,  1.2806,  1.2926,  1.3046,  1.3166,
-         1.3287,  1.3407,  1.3527,  1.3647,  1.3768,  1.3888,  1.4008,  1.4128,
-         1.4248,  1.4369,  1.4489,  1.4609,  1.4729,  1.4850,  1.4970,  1.5090,
-         1.5210,  1.5331,  1.5451,  1.5571,  1.5691,  1.5812,  1.5932,  1.6052,
-         1.6172,  1.6293,  1.6413,  1.6533,  1.6653,  1.6774,  1.6894,  1.7014,
-         1.7134,  1.7255,  1.7375,  1.7495,  1.7615,  1.7735,  1.7856,  1.7976,
-         1.8096,  1.8216,  1.8337,  1.8457,  1.8577,  1.8697,  1.8818,  1.8938,
-         1.9058,  1.9178,  1.9299,  1.9419,  1.9539,  1.9659,  1.9780,  1.9900,
-         2.0020,  2.0140,  2.0261,  2.0381,  2.0501,  2.0621,  2.0741,  2.0862,
-         2.0982,  2.1102,  2.1222,  2.1343,  2.1463,  2.1583,  2.1703,  2.1824,
-         2.1944,  2.2064,  2.2184,  2.2305,  2.2425,  2.2545,  2.2665,  2.2786,
-         2.2906,  2.3026,  2.3146,  2.3267,  2.3387,  2.3507,  2.3627,  2.3747,
-         2.3868,  2.3988,  2.4108,  2.4228,  2.4349,  2.4469,  2.4589,  2.4709,
-         2.4830,  2.4950,  2.5070,  2.5190,  2.5311,  2.5431,  2.5551,  2.5671,
-         2.5792,  2.5912,  2.6032,  2.6152,  2.6273,  2.6393,  2.6513,  2.6633,
-         2.6754,  2.6874,  2.6994,  2.7114,  2.7234,  2.7355,  2.7475,  2.7595,
-         2.7715,  2.7836,  2.7956,  2.8076,  2.8196,  2.8317,  2.8437,  2.8557,
-         2.8677,  2.8798,  2.8918,  2.9038,  2.9158,  2.9279,  2.9399,  2.9519,
-         2.9639,  2.9760,  2.9880,  3.0000])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.5644],
-        [0.5644],
-        [0.5643],
-        [0.5643],
-        [0.5643]], grad_fn=&lt;SliceBackward0&gt;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yhat</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([500]), torch.Size([569, 1]), torch.Size([500, 1]))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
-    <span class="n">yhat</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">yhat</span><span class="p">)</span>
-    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-    <span class="n">loss_fn</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-    <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_fn</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yhat</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.2903],
-        [-0.2967],
-        [-0.3032],
-        [-0.3096],
-        [-0.3160]], grad_fn=&lt;SliceBackward0&gt;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Loss through training Epochs&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/135ac45f3fbf721e41e16fd6c3a402ceb11316644d4569cbe7ff78edfb5168e6.png" src="_images/135ac45f3fbf721e41e16fd6c3a402ceb11316644d4569cbe7ff78edfb5168e6.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Learned Function vs. Actual Data&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/2d5c8452caab55185d090f6147488f36014167ff3c921de7030ef31c5d46c115.png" src="_images/2d5c8452caab55185d090f6147488f36014167ff3c921de7030ef31c5d46c115.png" />
-</div>
-</div>
-<p>What we see here is an example of the <strong>Universal Approximation Theorem</strong> and our first example of an artificial neural network.  <a class="reference external" href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">Wikipedia</a></p>
-</section>
 <section id="linear-models-revisited">
 <h2>Linear Models Revisited<a class="headerlink" href="#linear-models-revisited" title="Link to this heading">#</a></h2>
 <p>Recall our logistic regression model.  We can think about this model as a linear function composed into the sigmoid function.</p>
@@ -790,7 +583,8 @@
 <div class="math notranslate nohighlight">
 \[\text{Logistic Model} = \sigma(l(x))\]</div>
 <p><img alt="" src="_images/linear_sep.png" /></p>
-<p>We also understodd the quality of the model minimizing a loss function – log loss.  This is also called <strong>binary cross entropy</strong>, and the “best” model was the one whose parameters minimized the log loss or BCE.  Together, we have two important ideas – a linear function and the goal of minimizing a loss function.  Linear regression is a similar algorithm with a different loss function – Mean Squared Error.</p>
+<p>We also understodd the quality of the model minimizing a loss function – log loss.  This is also called <strong>binary cross entropy</strong>, and the “best” model was the one whose parameters minimized the log loss or BCE.  Together, we have two important ideas – a linear function and the goal of minimizing a loss function.</p>
+<p>Linear regression is a similar algorithm with a different loss function – Mean Squared Error.</p>
 <section id="minimizing-functions">
 <h3>Minimizing Functions<a class="headerlink" href="#minimizing-functions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -833,6 +627,8 @@
 <img alt="_images/11c16c4bfafd84c3e9aea2f421c10da85d1d0986d713ca36a9670f0653517980.png" src="_images/11c16c4bfafd84c3e9aea2f421c10da85d1d0986d713ca36a9670f0653517980.png" />
 </div>
 </div>
+<div class="math notranslate nohighlight">
+\[x_{n + 1} = x_n - \text{step size} * f'(x_n)\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>
@@ -886,17 +682,56 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Iterations of Descent&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Minimizing A Function with Gradient Descent&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Minimizing A Function with Gradient Descent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e3e8a1870542d24ed0bb3eeeb0591f3b153a3312082a09e9fcdeab1294b082b5.png" src="_images/e3e8a1870542d24ed0bb3eeeb0591f3b153a3312082a09e9fcdeab1294b082b5.png" />
+<img alt="_images/af6b17b52e5b0c6947285fbfe294420312a82a30a61b32af562509f8c3046bb3.png" src="_images/af6b17b52e5b0c6947285fbfe294420312a82a30a61b32af562509f8c3046bb3.png" />
 </div>
 </div>
+<section id="nn-linear">
+<h4><code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code><a class="headerlink" href="#nn-linear" title="Link to this heading">#</a></h4>
+<p>This layer performs a linear operation on its input using randomly initialized weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">linear</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> <span class="c1">#slope and intercept/bias</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parameter containing:
+ tensor([[-0.1917]], requires_grad=True),
+ Parameter containing:
+ tensor([0.6534], requires_grad=True)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linear</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">5.</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.3048], grad_fn=&lt;ViewBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="a-visual-example">
 <h3>A Visual Example<a class="headerlink" href="#a-visual-example" title="Link to this heading">#</a></h3>
@@ -920,18 +755,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/a5f85a7d54e9dad664a864be43cdd14d49a2f4e04a77e9132c83e1c39c4ff248.png" src="_images/a5f85a7d54e9dad664a864be43cdd14d49a2f4e04a77e9132c83e1c39c4ff248.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">out_features</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">out_features</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -946,111 +770,580 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span><span class="p">(</span><span class="n">X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([  23.6913,   79.8806, -264.8895,   86.6454,  184.6571, -478.5456,
-         -71.5017, -315.2294, -259.5677, -235.2671,    5.0943,  301.7432,
-         176.5565, -139.8545,  138.5058, -355.6392,  -84.3386, -440.7909,
-         194.5602, -332.8313, -362.3071,  210.6747,   59.2030,  467.0563,
-         120.8150,  472.7196,  121.4425, -113.7389, -166.0539, -333.7622,
-         206.2944, -402.4569,  276.0428,  -62.9335, -374.9991,  -13.6699,
-         521.1909, -480.2935,   11.7878, -235.7927,   90.6675,  335.1009,
-        -238.4158, -236.5206,  120.4615,   61.8277, -107.8010,  143.2649,
-         260.4332,  -96.2766,  335.5218, -109.6438,    5.9979, -413.1613,
-         229.7469, -150.1314,  462.1651,  413.3831,  207.9962,  -89.5430,
-        -155.4217,  269.5447,  235.0949, -159.0285,  383.7048, -342.7009,
-         222.2795,  215.5688,  -93.2076, -363.5149,  179.7176, -503.1702,
-         503.0753,  -46.1244,  261.4064,  464.0982,  101.1189, -347.2296,
-        -114.1725,  135.8859,  300.3455,  -78.6187,  -56.4041,  215.1210,
-         264.3039,   87.5481,  -95.1615,  151.4561, -382.9924, -199.1770,
-         268.5875,  154.7519, -102.0273, -407.3728,  237.0377,    2.5461,
-        -267.7597,  187.4090,  151.3568, -473.4008], grad_fn=&lt;SelectBackward0&gt;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">l1</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parameter containing:
- tensor([[ 0.0461,  0.1466,  0.0335,  ...,  0.0720, -0.0554, -0.1565],
-         [ 0.0602, -0.1323,  0.1103,  ..., -0.0801,  0.1705,  0.0726],
-         [-0.0117,  0.1725, -0.0983,  ..., -0.1214,  0.1722,  0.0522],
-         ...,
-         [ 0.0923,  0.0484, -0.0076,  ...,  0.1557,  0.0838, -0.1801],
-         [-0.1420, -0.0284, -0.1030,  ..., -0.1816,  0.0290,  0.1678],
-         [ 0.1252,  0.0861,  0.0958,  ...,  0.0466, -0.1793,  0.0086]],
-        requires_grad=True),
- Parameter containing:
- tensor([ 0.1819,  0.1250,  0.0368,  0.1341,  0.0254,  0.1350, -0.0618,  0.1179,
-          0.1283, -0.1765, -0.1070, -0.0900, -0.1737, -0.0711,  0.0129, -0.1362,
-          0.0964, -0.1204, -0.0918, -0.1818, -0.1104,  0.1630,  0.0734,  0.0911,
-         -0.0352,  0.0076, -0.0943,  0.0249, -0.0682,  0.0521, -0.1775,  0.1571,
-          0.1815,  0.1232, -0.0209,  0.0370, -0.1156, -0.1765, -0.1076,  0.0628,
-          0.0368, -0.0636, -0.1729, -0.0209, -0.0701, -0.1206,  0.0267, -0.0175,
-          0.0820, -0.1657,  0.0532, -0.1711, -0.0963, -0.0093, -0.0902, -0.0266,
-          0.0562, -0.0590,  0.0253,  0.0487,  0.0674,  0.0720, -0.1455,  0.1417,
-         -0.1587, -0.1146, -0.0635,  0.1267,  0.0461, -0.0227,  0.1131,  0.1196,
-          0.0335, -0.0124, -0.0988, -0.1798, -0.1212, -0.0733,  0.0082,  0.1759,
-          0.1023,  0.0179,  0.0209, -0.0358, -0.0372,  0.1521, -0.0330,  0.1103,
-         -0.1783, -0.1289, -0.0006, -0.1026,  0.1309, -0.1054, -0.1403, -0.0491,
-         -0.0216,  0.1532, -0.1346, -0.0359], requires_grad=True)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">activation</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">(</span><span class="n">output_1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_2</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[15.7168],
-        [ 9.1403],
-        [ 8.6870],
-        [ 4.3181],
-        [ 7.4469],
-        [ 4.9296],
-        [ 8.3336],
-        [ 5.7261],
-        [ 4.4716],
-        [ 3.9067]], grad_fn=&lt;SliceBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[385.6059],
+        [425.1644],
+        [381.2654],
+        [123.1488],
+        [380.3270],
+        [155.7974],
+        [340.3042],
+        [191.4602],
+        [162.7812],
+        [153.5927],
+        [252.9365],
+        [266.2387],
+        [329.4026],
+        [220.5488],
+        [166.8834],
+        [208.0313],
+        [233.6949],
+        [271.0690],
+        [466.2239],
+        [166.1907],
+        [149.5128],
+        [ 77.3162],
+        [218.0750],
+        [511.1205],
+        [389.4114],
+        [308.9959],
+        [198.7623],
+        [331.0209],
+        [254.9189],
+        [285.9835],
+        [360.2159],
+        [167.4129],
+        [292.0126],
+        [384.0669],
+        [264.4366],
+        [272.3440],
+        [186.9859],
+        [141.8659],
+        [195.4436],
+        [168.5011],
+        [175.0093],
+        [115.1450],
+        [359.5890],
+        [185.4277],
+        [164.1520],
+        [342.8755],
+        [ 58.5466],
+        [167.1497],
+        [133.8530],
+        [165.1459],
+        [125.5530],
+        [160.8275],
+        [126.6336],
+        [312.8376],
+        [225.4085],
+        [120.5401],
+        [420.6554],
+        [212.5527],
+        [152.6815],
+        [ 64.7041],
+        [ 91.0730],
+        [ 66.4581],
+        [209.5568],
+        [ 75.6245],
+        [177.3172],
+        [207.6735],
+        [ 79.6804],
+        [113.6258],
+        [ 75.5284],
+        [139.5494],
+        [386.6965],
+        [ 70.4334],
+        [333.2090],
+        [179.7733],
+        [140.7128],
+        [266.7924],
+        [154.0018],
+        [342.4907],
+        [379.5468],
+        [147.6422],
+        [121.8749],
+        [147.6585],
+        [581.4711],
+        [323.4955],
+        [131.3045],
+        [347.8865],
+        [191.9728],
+        [349.0177],
+        [136.8732],
+        [191.1504],
+        [193.9312],
+        [206.3083],
+        [178.2025],
+        [164.0910],
+        [224.3710],
+        [395.0594],
+        [125.7926],
+        [ 87.7052],
+        [120.0431],
+        [191.5875],
+        [193.5374],
+        [ 43.0810],
+        [132.4814],
+        [ 86.7152],
+        [ 98.0784],
+        [174.0295],
+        [122.3387],
+        [132.3212],
+        [505.1856],
+        [119.6320],
+        [ 86.6926],
+        [133.6069],
+        [176.5305],
+        [ 94.4445],
+        [ 67.2337],
+        [133.9390],
+        [ 68.3867],
+        [227.3170],
+        [264.8519],
+        [294.5808],
+        [117.5188],
+        [343.3098],
+        [521.0482],
+        [180.9499],
+        [155.3643],
+        [171.3465],
+        [183.1933],
+        [351.0328],
+        [190.2109],
+        [364.2998],
+        [129.9817],
+        [245.6834],
+        [257.1158],
+        [219.8407],
+        [346.1803],
+        [151.9675],
+        [127.8226],
+        [112.8264],
+        [219.1846],
+        [108.3369],
+        [ 82.2619],
+        [266.3422],
+        [118.0320],
+        [150.0077],
+        [104.0613],
+        [123.6807],
+        [132.6603],
+        [198.1650],
+        [183.3826],
+        [171.2808],
+        [150.9269],
+        [ 60.3736],
+        [ 91.8039],
+        [107.6782],
+        [158.3378],
+        [134.0098],
+        [299.6031],
+        [252.9788],
+        [127.6878],
+        [108.7975],
+        [127.5925],
+        [352.4642],
+        [438.9236],
+        [134.4822],
+        [532.8017],
+        [193.6805],
+        [100.0958],
+        [280.2904],
+        [344.6536],
+        [194.3747],
+        [132.0196],
+        [199.2160],
+        [236.1602],
+        [102.1293],
+        [100.1049],
+        [ 64.1702],
+        [ 91.5782],
+        [238.2876],
+        [149.8196],
+        [142.0125],
+        [712.1172],
+        [438.1293],
+        [260.3235],
+        [114.5135],
+        [217.8821],
+        [ 98.6447],
+        [317.0545],
+        [123.1188],
+        [120.9522],
+        [132.3665],
+        [180.4637],
+        [146.8713],
+        [ 79.8177],
+        [161.5931],
+        [191.2035],
+        [146.2700],
+        [183.4704],
+        [299.8969],
+        [366.0995],
+        [214.4099],
+        [143.3075],
+        [285.3851],
+        [486.2537],
+        [222.6867],
+        [150.7548],
+        [220.1203],
+        [ 82.9459],
+        [278.0937],
+        [152.9500],
+        [214.3382],
+        [390.8600],
+        [127.2601],
+        [713.2225],
+        [264.3916],
+        [185.6940],
+        [172.5236],
+        [126.4306],
+        [ 95.5270],
+        [420.7129],
+        [470.8332],
+        [165.2664],
+        [162.2132],
+        [ 90.6141],
+        [238.8570],
+        [163.5269],
+        [197.4455],
+        [ 94.6807],
+        [194.5492],
+        [147.2164],
+        [156.8078],
+        [270.2161],
+        [112.7176],
+        [115.2002],
+        [415.9377],
+        [ 80.8582],
+        [173.7032],
+        [594.7373],
+        [400.8531],
+        [183.8498],
+        [302.9858],
+        [165.3815],
+        [133.2438],
+        [112.7207],
+        [172.5309],
+        [339.1064],
+        [ 98.5858],
+        [150.5862],
+        [148.6569],
+        [106.0068],
+        [117.5114],
+        [443.6562],
+        [120.8196],
+        [405.5094],
+        [279.1884],
+        [401.7118],
+        [185.6088],
+        [406.7041],
+        [215.9131],
+        [265.1793],
+        [231.7568],
+        [406.2415],
+        [281.8440],
+        [296.1489],
+        [227.0885],
+        [304.1989],
+        [613.3719],
+        [102.1399],
+        [161.5824],
+        [145.5543],
+        [100.0941],
+        [173.2524],
+        [110.1315],
+        [504.5834],
+        [ 84.7809],
+        [303.4726],
+        [123.1559],
+        [112.1837],
+        [309.0811],
+        [170.8656],
+        [164.8572],
+        [370.9340],
+        [126.8918],
+        [358.9413],
+        [238.5231],
+        [146.1127],
+        [139.1817],
+        [129.5569],
+        [142.9206],
+        [111.8856],
+        [112.9591],
+        [191.3653],
+        [196.5560],
+        [144.3390],
+        [124.4168],
+        [136.6943],
+        [162.8214],
+        [ 99.0971],
+        [131.3993],
+        [188.7959],
+        [ 93.9362],
+        [423.6980],
+        [135.5242],
+        [390.3335],
+        [ 93.7101],
+        [117.5654],
+        [119.0636],
+        [153.3978],
+        [ 69.8470],
+        [164.5318],
+        [157.4952],
+        [118.5574],
+        [196.6161],
+        [146.5678],
+        [113.6858],
+        [ 62.3848],
+        [134.7057],
+        [128.0575],
+        [324.8601],
+        [ 72.1593],
+        [132.7603],
+        [ 94.4336],
+        [384.9345],
+        [143.8275],
+        [412.6895],
+        [135.2859],
+        [139.5942],
+        [178.2682],
+        [127.5211],
+        [251.7369],
+        [239.8643],
+        [241.1124],
+        [149.9733],
+        [109.4512],
+        [114.7387],
+        [132.5284],
+        [298.3152],
+        [142.7844],
+        [380.9796],
+        [ 91.4125],
+        [603.4620],
+        [195.0843],
+        [ 82.7392],
+        [105.9966],
+        [358.7552],
+        [122.8373],
+        [ 89.7529],
+        [131.8483],
+        [200.8518],
+        [114.8557],
+        [121.6879],
+        [126.3329],
+        [220.9971],
+        [677.0919],
+        [231.7601],
+        [110.6581],
+        [137.0247],
+        [145.1196],
+        [168.9988],
+        [ 72.4895],
+        [ 93.7470],
+        [142.4478],
+        [154.4638],
+        [141.5353],
+        [242.4823],
+        [158.5611],
+        [400.9662],
+        [383.4135],
+        [140.1878],
+        [602.6859],
+        [483.6783],
+        [261.1656],
+        [199.9380],
+        [384.8380],
+        [425.2932],
+        [163.2012],
+        [216.3300],
+        [ 91.0975],
+        [163.9034],
+        [161.5601],
+        [111.9773],
+        [111.8852],
+        [106.7326],
+        [123.6611],
+        [138.0370],
+        [151.9718],
+        [189.1689],
+        [130.0730],
+        [175.0304],
+        [111.0453],
+        [331.7663],
+        [ 92.7705],
+        [ 73.3990],
+        [268.3349],
+        [452.0145],
+        [131.6606],
+        [169.6781],
+        [161.4070],
+        [145.3985],
+        [113.1418],
+        [130.0435],
+        [298.6223],
+        [133.1189],
+        [150.3924],
+        [142.3147],
+        [132.8214],
+        [110.8583],
+        [228.1250],
+        [154.1153],
+        [304.8116],
+        [140.7985],
+        [119.8614],
+        [110.0282],
+        [ 75.7031],
+        [204.6302],
+        [218.7270],
+        [126.1414],
+        [ 84.1175],
+        [330.3467],
+        [138.8142],
+        [110.9491],
+        [121.7879],
+        [192.4903],
+        [115.7817],
+        [167.5982],
+        [ 90.4162],
+        [ 90.3155],
+        [100.6125],
+        [111.2829],
+        [105.5458],
+        [143.3810],
+        [198.0254],
+        [129.3493],
+        [359.4892],
+        [356.5425],
+        [190.7578],
+        [188.6352],
+        [149.3391],
+        [178.6596],
+        [175.9903],
+        [170.0743],
+        [110.2574],
+        [289.8058],
+        [169.6444],
+        [ 93.9841],
+        [296.5919],
+        [126.9309],
+        [313.2699],
+        [196.1140],
+        [194.4151],
+        [442.3218],
+        [124.2708],
+        [345.5390],
+        [128.3248],
+        [182.6312],
+        [146.0563],
+        [167.6344],
+        [125.4113],
+        [154.9266],
+        [151.9552],
+        [ 86.0437],
+        [334.9469],
+        [905.5530],
+        [183.1540],
+        [118.8649],
+        [159.3483],
+        [165.1531],
+        [160.4539],
+        [ 87.6969],
+        [318.0310],
+        [122.8011],
+        [ 88.8856],
+        [136.9910],
+        [206.0622],
+        [138.0359],
+        [102.8029],
+        [144.6574],
+        [188.4209],
+        [171.7232],
+        [114.1210],
+        [230.8881],
+        [131.3198],
+        [186.2254],
+        [156.5313],
+        [164.7318],
+        [208.2155],
+        [138.4752],
+        [194.9171],
+        [376.0541],
+        [126.8436],
+        [252.6947],
+        [142.1432],
+        [289.2410],
+        [319.2804],
+        [133.3829],
+        [156.5364],
+        [192.8399],
+        [145.2354],
+        [141.0107],
+        [347.9254],
+        [403.0551],
+        [202.4365],
+        [181.9880],
+        [134.9574],
+        [579.9763],
+        [ 71.7991],
+        [ 78.4644],
+        [127.4013],
+        [102.2906],
+        [229.3870],
+        [215.3423],
+        [117.9109],
+        [189.3057],
+        [180.6059],
+        [198.0365],
+        [217.2246],
+        [114.2890],
+        [331.6286],
+        [372.3651],
+        [152.2468],
+        [146.3449],
+        [ 76.4938],
+        [586.2101],
+        [108.7388],
+        [166.9078],
+        [ 87.2658],
+        [ 64.2720],
+        [164.6628],
+        [133.7273],
+        [166.0365],
+        [129.3683],
+        [128.0057],
+        [125.8141],
+        [174.1215],
+        [390.0528],
+        [101.7245],
+        [407.6327],
+        [178.7321],
+        [118.5261],
+        [ 58.0628],
+        [ 53.4199],
+        [113.3562],
+        [192.0620],
+        [196.8395],
+        [155.0190],
+        [167.5977],
+        [171.6828],
+        [ 93.1960],
+        [ 88.9811],
+        [ 85.8754],
+        [114.7710],
+        [103.1692],
+        [108.3144],
+        [146.9176],
+        [ 75.5056],
+        [147.6724],
+        [ 91.6771],
+        [ 87.8983],
+        [ 82.3798],
+        [183.4592],
+        [116.4222],
+        [173.6772],
+        [111.6660],
+        [213.3705],
+        [417.5299],
+        [465.6631],
+        [394.5838],
+        [260.8066],
+        [402.2528],
+        [ 60.4572]], grad_fn=&lt;AddmmBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -1064,7 +1357,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yhat</span> <span class="o">=</span> <span class="n">output_activation</span><span class="p">(</span><span class="n">output_2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yhat</span> <span class="o">=</span> <span class="n">output_activation</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1095,7 +1388,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(39.4904, grad_fn=&lt;BinaryCrossEntropyBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(37.2583, grad_fn=&lt;BinaryCrossEntropyBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -1468,9 +1761,11 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-revisited">Regression Revisited</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-models-revisited">Linear Models Revisited</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-functions">Minimizing Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-functions">Minimizing Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-linear"><code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-visual-example">A Visual Example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-predictions">Making Predictions</a><ul class="nav section-nav flex-column">
