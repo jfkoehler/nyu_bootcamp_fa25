@@ -36,6 +36,7 @@ parts:
   - caption: Artificial Neural Networks
     chapters:
     - file: intro_to_pytorch
+    - file: pytorch_intro_convnets
     
   - caption: Projects
     chapters:
