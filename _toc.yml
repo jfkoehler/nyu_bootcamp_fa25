@@ -40,8 +40,9 @@ parts:
 
   - caption: Library and WRDS 
     chapters:
-    - file: presentations/library/wrds_1
     - file: presentations/library/wrds_2
+    - file: presentations/library/wrds_1
+    
     
   - caption: Projects
     chapters:
