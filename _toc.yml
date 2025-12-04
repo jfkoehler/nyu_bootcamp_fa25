@@ -37,6 +37,11 @@ parts:
     chapters:
     - file: intro_to_pytorch
     - file: pytorch_intro_convnets
+
+  - caption: Library and WRDS 
+    chapters:
+    - file: presentations/library/wrds_1
+    - file: presentations/library/wrds_2
     
   - caption: Projects
     chapters:

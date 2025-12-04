@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Climb the Ladder! &#8212; Stern Data Bootcamp</title>
+    <title>0. Setup WRDS Python API &#8212; Stern Data Bootcamp</title>
   
   
   
@@ -60,13 +60,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'extras/intro_to_python/ladder-1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'presentations/library/wrds_2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Plotting with bokeh" href="../visualization/Plotting_with_bokeh.html" />
-    <link rel="prev" title="Regression Part II" href="../../solutions/practice_regression-solns.html" />
+    <link rel="next" title="Midterm Project" href="../../projects/midterm.html" />
+    <link rel="prev" title="Data Workflow Steps" href="wrds_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -252,9 +250,9 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Library and WRDS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../presentations/library/wrds_1.html">Data Workflow Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../presentations/library/wrds_2.html">0. Setup WRDS Python API</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wrds_1.html">Data Workflow Steps</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">0. Setup WRDS Python API</a></li>
 
 
 
@@ -302,12 +300,12 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Climb the Ladder!</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../extras/intro_to_python/ladder-1.html">Climb the Ladder!</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../visualization/Plotting_with_bokeh.html">Plotting with <code class="docutils literal notranslate"><span class="pre">bokeh</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extras/visualization/Plotting_with_bokeh.html">Plotting with <code class="docutils literal notranslate"><span class="pre">bokeh</span></code></a></li>
 </ul>
 
     </div>
@@ -367,7 +365,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/extras/intro_to_python/ladder-1.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/presentations/library/wrds_2.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -415,7 +413,7 @@
       
       
       
-      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fextras/intro_to_python/ladder-1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fpresentations/library/wrds_2.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -445,7 +443,7 @@
       
       
       
-      <li><a href="../../_sources/extras/intro_to_python/ladder-1.ipynb" target="_blank"
+      <li><a href="../../_sources/presentations/library/wrds_2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -521,7 +519,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Climb the Ladder!</h1>
+    <h1>0. Setup WRDS Python API</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -531,13 +529,19 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Climb the Ladder!</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#section-i-numbers-variables-and-math">Section I: Numbers, variables, and math.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-icing-do-you-need">How much icing do you need?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">0. Setup WRDS Python API</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-pre-installed-wrds-package">1. Import pre installed WRDS package</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-connection-with-wrds-server">2. Establish connection with WRDS server</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-libraries">3. List all libraries</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-datasets-within-a-given-library">4. List all datasets within a given library</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#webpage-counterpart-https-wrds-www-wharton-upenn-edu-data-dictionary-comp-na-monthly-all">Webpage counterpart: https://wrds-www.wharton.upenn.edu/data-dictionary/comp_na_monthly_all/</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-strings">Part II: Strings</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-lists">Part III: Lists</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#query-data-from-wrds-server">5. Query Data from WRDS Server</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-dataset">6. Subsetting Dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#join-multiple-datasets">7. Join Multiple Datasets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-your-output">8. Saving Your Output</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-end">The End</a></li>
 </ul>
 
             </nav>
@@ -550,139 +554,280 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="climb-the-ladder">
-<h1>Climb the Ladder!<a class="headerlink" href="#climb-the-ladder" title="Link to this heading">#</a></h1>
-<p>Our class moves quickly! Sometimes, it feels like we make leaps in logic that are a bit too big. Learn Python <em>slowly</em>, by doing many, many examples. Problems in this notebook start out easy and progressively get harder, so that the next rung of the Python ladder is always within reach.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="section-i-numbers-variables-and-math">
-<h1>Section I: Numbers, variables, and math.<a class="headerlink" href="#section-i-numbers-variables-and-math" title="Link to this heading">#</a></h1>
-<ol class="arabic simple">
-<li><p>What is 123456789 times 987654321?</p></li>
-</ol>
-<ol class="arabic simple" start="2">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">mass</span></code> that is equal to 100.</p></li>
-</ol>
-<ol class="arabic simple" start="3">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">velocity</span></code> that is equal to 5.</p></li>
-</ol>
-<ol class="arabic simple" start="4">
-<li><p>In physics, the momentum an object is exerting is equal to its mass times its velocity. That is, <span class="math notranslate nohighlight">\(p = mv\)</span>. Use the variables you defined above to compute this object’s momentum.</p></li>
-</ol>
-<ol class="arabic simple" start="5">
-<li><p>The kinetic energy of an object is half its mass times the square of its velocity. That is, <span class="math notranslate nohighlight">\(K = \frac{1}{2}mv^2\)</span>. Compute the kinetic energy for this object using the variables you’ve already created.</p></li>
-</ol>
-<section id="how-much-icing-do-you-need">
-<h2>How much icing do you need?<a class="headerlink" href="#how-much-icing-do-you-need" title="Link to this heading">#</a></h2>
-<p>In the next few exercises, our goal will be to figure out how much icing we will need to perfectly cover a giant doughnut. The doughnut features a hole (unfortunately no jelly filling), and a few large sprinkles. We only need to find the area of the red region in this shape.</p>
-<p><img alt="" src="extras/intro_to_python/imgs/donut.png" /></p>
-<ol class="arabic simple" start="6">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">pi</span></code> that is equal to 3.141</p></li>
-</ol>
-<ol class="arabic simple" start="7">
-<li><p>The radius of the largest circle is 13.425. The radius of the smaller circle is 4.792. The sprinkles are right triangles with side length 3.28. Create the variables <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, and <code class="docutils literal notranslate"><span class="pre">s</span></code> that represent these values.</p></li>
-</ol>
-<ol class="arabic simple" start="8">
-<li><p>Find the area of the larger circle (the whole doughnut, including the hole). Call this variable <code class="docutils literal notranslate"><span class="pre">area_big_circle</span></code>.</p></li>
-</ol>
+  <p><strong>Tutorial</strong>: <a class="reference external" href="https://wrds-www.wharton.upenn.edu/documents/1443/wrds_connection.html">https://wrds-www.wharton.upenn.edu/documents/1443/wrds_connection.html</a></p>
+<section id="setup-wrds-python-api">
+<h1>0. Setup WRDS Python API<a class="headerlink" href="#setup-wrds-python-api" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><em>Hint:</em> The area of a circle with radius <span class="math notranslate nohighlight">\(r\)</span> is <span class="math notranslate nohighlight">\(A = \pi r^2\)</span>.</p></li>
+<li><p>To be done before running this notebook</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/wrds/">https://pypi.org/project/wrds/</a></p></li>
+<li><p>run “pip install wrds”</p></li>
+<li><p>Mac: in terminal</p></li>
+<li><p>PC: in Anaconda prompt</p></li>
+<li><p>Spyder or Jupyter</p></li>
 </ul>
-<ol class="arabic simple" start="9">
-<li><p>Find the area of the smaller circle (the hole). Call this variable <code class="docutils literal notranslate"><span class="pre">area_small_circle</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="10">
-<li><p>Find the area of one triangle (a sprinkle), where each sprinkle has a base and height of length <code class="docutils literal notranslate"><span class="pre">s</span></code>. Call this variable <code class="docutils literal notranslate"><span class="pre">area_sprinkle</span></code>.</p></li>
-</ol>
-<ul class="simple">
-<li><p><em>Hint:</em> The area of a triangle with base <span class="math notranslate nohighlight">\(b\)</span> and height <span class="math notranslate nohighlight">\(h\)</span> is <span class="math notranslate nohighlight">\(A = \frac{1}{2}bh\)</span>.</p></li>
-</ul>
-<ol class="arabic simple" start="11">
-<li><p>Using the three values you calculated above, find the area of the shaded region (i.e., how much icing will you need?). Save the result in a variable called <code class="docutils literal notranslate"><span class="pre">area_donut</span></code>.</p></li>
-</ol>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-ii-strings">
-<h1>Part II: Strings<a class="headerlink" href="#part-ii-strings" title="Link to this heading">#</a></h1>
-<ol class="arabic simple" start="12">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">name</span></code> that is equal to your name.</p></li>
-</ol>
-<ol class="arabic simple" start="13">
-<li><p>By adding strings together, introduce yourself in a string. For example <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">my</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">Tim!&quot;</span></code>. You may use f-strings if you know what they are and prefer to use them.</p></li>
-</ol>
-<ol class="arabic simple" start="14">
-<li><p>Define the string <code class="docutils literal notranslate"><span class="pre">fact</span></code> to be <code class="docutils literal notranslate"><span class="pre">&quot;Python</span> <span class="pre">programming</span> <span class="pre">is</span> <span class="pre">fun.&quot;</span></code></p></li>
-</ol>
-<ol class="arabic simple" start="15">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">fact</span></code> in order to get the “o” in “Python”.</p></li>
-</ol>
-<ol class="arabic simple" start="16">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">fact</span></code> in order to get the “u” in “fun” using a negative index.</p></li>
-</ol>
-<ol class="arabic simple" start="17">
-<li><p>Slice <code class="docutils literal notranslate"><span class="pre">fact</span></code> in order to get the word “programming”.</p></li>
-</ol>
-<ol class="arabic simple" start="18">
-<li><p>Uppercase <code class="docutils literal notranslate"><span class="pre">fact</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="19">
-<li><p>Replace the period at the end of <code class="docutils literal notranslate"><span class="pre">fact</span></code> with an exclamation point.</p></li>
-</ol>
-<ol class="arabic simple" start="20">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">.split()</span></code> to get the second word of this string. Was this easier than one of the problems above?</p></li>
-</ol>
-<ol class="arabic simple" start="21">
-<li><p>Reverse <code class="docutils literal notranslate"><span class="pre">fact</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="22">
-<li><p>Does <code class="docutils literal notranslate"><span class="pre">fact</span></code> contain the letter <code class="docutils literal notranslate"><span class="pre">y</span></code>? To find this answer, use the <code class="docutils literal notranslate"><span class="pre">in</span></code> keyword.</p></li>
-</ol>
-<ol class="arabic simple" start="23">
-<li><p>How many <code class="docutils literal notranslate"><span class="pre">o</span></code>s does <code class="docutils literal notranslate"><span class="pre">fact</span></code> have?</p></li>
-</ol>
-<ol class="arabic simple" start="24">
-<li><p>Replace all the <code class="docutils literal notranslate"><span class="pre">o</span></code>s in <code class="docutils literal notranslate"><span class="pre">fact</span></code> with an underscore (do not redefine <code class="docutils literal notranslate"><span class="pre">fact</span></code>).</p></li>
-</ol>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-iii-lists">
-<h1>Part III: Lists<a class="headerlink" href="#part-iii-lists" title="Link to this heading">#</a></h1>
-<ol class="arabic simple" start="25">
-<li><p>Create a list <code class="docutils literal notranslate"><span class="pre">friends</span></code> of your three best friends, <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Bob&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;Charlie&quot;</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="26">
-<li><p>Find the length of <code class="docutils literal notranslate"><span class="pre">friends</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="27">
-<li><p>Add your new friend <code class="docutils literal notranslate"><span class="pre">&quot;Debbie&quot;</span></code> to your list of <code class="docutils literal notranslate"><span class="pre">friends</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="28">
-<li><p>Charlie has no-showed to your piano recital. Remove him from your <code class="docutils literal notranslate"><span class="pre">friends</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="29">
-<li><p>Using the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method, join <code class="docutils literal notranslate"><span class="pre">friends</span></code> to look like this <em>exactly</em>: <code class="docutils literal notranslate"><span class="pre">&quot;Alice</span> <span class="pre">&amp;</span> <span class="pre">Bob</span> <span class="pre">&amp;</span> <span class="pre">Debbie&quot;</span></code></p></li>
-</ol>
-<ol class="arabic simple" start="30">
-<li><p>What is the length of <code class="docutils literal notranslate"><span class="pre">[]</span></code>? What about <code class="docutils literal notranslate"><span class="pre">[[]]</span></code>? Why?</p></li>
-</ol>
-<p>For the next few problems, we’ll use this list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nested_deep</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">]]]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########################### In Colab #####################</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>wrds
 </pre></div>
 </div>
 </div>
 </div>
-<ol class="arabic simple" start="31">
-<li><p>What is the length of <code class="docutils literal notranslate"><span class="pre">nested_deep</span></code>?</p></li>
-</ol>
-<ol class="arabic simple" start="32">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">nested_deep</span></code> to get the 5.</p></li>
-</ol>
-<ol class="arabic simple" start="33">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">nested_deep</span></code> to get the 8.</p></li>
-</ol>
+</section>
+<section id="import-pre-installed-wrds-package">
+<h1>1. Import pre installed WRDS package<a class="headerlink" href="#import-pre-installed-wrds-package" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wrds</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="establish-connection-with-wrds-server">
+<h1>2. Establish connection with WRDS server<a class="headerlink" href="#establish-connection-with-wrds-server" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><em>Hint:</em> If your answer looks like <code class="docutils literal notranslate"><span class="pre">[8]</span></code>, that’s not the correct answer!</p></li>
+<li><p>log in using your WRDS username and password</p></li>
+<li><p>set up a pgpass file to store the info</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>  <span class="c1">#### 1st time login</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">wrds_username</span><span class="o">=</span><span class="s1">&#39;luojx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-all-libraries">
+<h1>3. List all libraries<a class="headerlink" href="#list-all-libraries" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>“Library” refers to databases on WRDS: e.g. CRSP, Compustat</p></li>
+<li><p>list_libraries() function to explore all subscribed databases</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">list_libraries</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1">#SORT LIBRARIES A-Z</span>
+<span class="c1">#conn.list_libraries() # LIST ALL LIBRARIES</span>
+<span class="c1">#conn.list_libraries()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">list_libraries</span><span class="p">()))</span><span class="o">+</span><span class="s2">&quot; libraries in the list&quot;</span><span class="p">)</span>
+<span class="c1">#conn.list_libraries()[:100]  #LIST THE FIRST 40 LIBRARIES</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 317 libraries in the list
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-all-datasets-within-a-given-library">
+<h1>4. List all datasets within a given library<a class="headerlink" href="#list-all-datasets-within-a-given-library" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>databases contain many sub datasets</p></li>
+<li><p>list_tables() function to list all datasets</p></li>
+<li><p>specify which “library/database”</p></li>
+</ul>
+<section id="webpage-counterpart-https-wrds-www-wharton-upenn-edu-data-dictionary-comp-na-monthly-all">
+<h2>Webpage counterpart: <a class="reference external" href="https://wrds-www.wharton.upenn.edu/data-dictionary/comp_na_monthly_all/">https://wrds-www.wharton.upenn.edu/data-dictionary/comp_na_monthly_all/</a><a class="headerlink" href="#webpage-counterpart-https-wrds-www-wharton-upenn-edu-data-dictionary-comp-na-monthly-all" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#conn.list_tables(library=&#39;comp_na_daily_all&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="query-data-from-wrds-server">
+<h1>5. Query Data from WRDS Server<a class="headerlink" href="#query-data-from-wrds-server" title="Link to this heading">#</a></h1>
+<ul>
+<li><p>get_table() method</p></li>
+<li><p>straightforward if getting data from one single dataset</p></li>
+<li><p>specify which library/database and table/dataset to “get”</p></li>
+<li><p>can slice data by:</p>
+<ul class="simple">
+<li><p>number of rows</p></li>
+<li><p>column names</p></li>
+</ul>
+<p><a class="reference external" href="https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/sp-global-market-intelligence/">https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/sp-global-market-intelligence/</a></p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Extract first 5 obs from comp.company</span>
+<span class="n">company</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;comp_na_daily_all&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+<span class="n">company</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">company</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">company</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Narrow down the specific columns to extract</span>
+
+<span class="n">company_narrow</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;comp_na_daily_all&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;company&#39;</span><span class="p">,</span>
+                                <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;conm&#39;</span><span class="p">,</span> <span class="s1">&#39;gvkey&#39;</span><span class="p">,</span> <span class="s1">&#39;cik&#39;</span><span class="p">],</span> <span class="n">obs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">company_narrow</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">company_narrow</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="subsetting-dataset">
+<h1>6. Subsetting Dataset<a class="headerlink" href="#subsetting-dataset" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>raw_sql() method</p></li>
+<li><p>when “conditioning” is needed</p></li>
+<li><p>familiar SQL syntax</p></li>
+<li><p>can pre-specify date column format</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select one stock&#39;s monthly price</span>
+<span class="c1"># from 2019 onwards</span>
+<span class="c1"># AAPL:14593</span>
+<span class="c1"># WRDS Linking Table: https://guides.nyu.edu/wrds/linking-suite</span>
+
+<span class="n">apple</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;select permno, date, prc, ret, shrout</span>
+<span class="s2">                        from crsp.msf</span>
+<span class="s2">                        where permno = 14593</span>
+<span class="s2">                        and date&gt;=&#39;01/01/2019&#39;&quot;&quot;&quot;</span><span class="p">,</span>
+                     <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apple</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apple</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>permno             Int64
+date      datetime64[ns]
+prc              Float64
+ret              Float64
+shrout           Float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="join-multiple-datasets">
+<h1>7. Join Multiple Datasets<a class="headerlink" href="#join-multiple-datasets" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>again raw_sql() method</p></li>
+<li><p>synatx similar to “proc sql” in SAS</p></li>
+<li><p>handle conditioning statement</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apple_fund</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;select a.gvkey, a.iid, a.datadate, a.tic, a.conm,</span>
+<span class="s2">                            a.at, b.prccm, b.cshoq</span>
+
+<span class="s2">                            from comp.funda a</span>
+<span class="s2">                            inner join comp.secm b</span>
+
+<span class="s2">                            on a.gvkey = b.gvkey</span>
+<span class="s2">                            and a.iid = b.iid</span>
+<span class="s2">                            and a.datadate = b.datadate</span>
+
+<span class="s2">                            where a.tic = &#39;AAPL&#39;</span>
+<span class="s2">                            and a.datadate&gt;=&#39;01/01/2010&#39;</span>
+<span class="s2">                            and a.datafmt = &#39;STD&#39;</span>
+<span class="s2">                            and a.consol = &#39;C&#39;</span>
+<span class="s2">                            and a.indfmt = &#39;INDL&#39;</span>
+<span class="s2">                            &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;datadate&#39;</span><span class="p">])</span>
+
+<span class="n">apple_fund</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apple_fund</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="saving-your-output">
+<h1>8. Saving Your Output<a class="headerlink" href="#saving-your-output" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Pandas support flexible output format</p></li>
+<li><p>pickle for further python work</p></li>
+<li><p>csv or excel</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># export the dataframe to csv format</span>
+<span class="c1"># apple_fund.to_csv(&#39;/your local directory/apple_fund.csv&#39;)</span>
+
+<span class="c1"># export the dataframe to xlsx format</span>
+<span class="c1">#apple_fund.to_excel(&#39;/your local directory/apple_fund.xlsx&#39;)</span>
+
+<span class="c1"># export the dataframe to dta format for STATA</span>
+<span class="c1"># apple_fund.to_stata(&#39;/your local directory/apple_fund.dta&#39;)</span>
+
+<span class="c1">#apple_fund.to_csv(&#39;/Users/jl14614/Desktop/apple_fund.csv&#39;, index=False)</span>
+<span class="n">apple_fund</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;apple_fund.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-end">
+<h1>The End<a class="headerlink" href="#the-end" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -698,7 +843,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./extras/intro_to_python"
+            path: "./presentations/library"
         },
         predefinedOutput: true
     }
@@ -716,20 +861,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../solutions/practice_regression-solns.html"
+       href="wrds_1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Regression Part II</p>
+        <p class="prev-next-title">Data Workflow Steps</p>
       </div>
     </a>
     <a class="right-next"
-       href="../visualization/Plotting_with_bokeh.html"
+       href="../../projects/midterm.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting with <code class="docutils literal notranslate"><span class="pre">bokeh</span></code></p>
+        <p class="prev-next-title">Midterm Project</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -750,13 +895,19 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Climb the Ladder!</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#section-i-numbers-variables-and-math">Section I: Numbers, variables, and math.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-icing-do-you-need">How much icing do you need?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">0. Setup WRDS Python API</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-pre-installed-wrds-package">1. Import pre installed WRDS package</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-connection-with-wrds-server">2. Establish connection with WRDS server</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-libraries">3. List all libraries</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-datasets-within-a-given-library">4. List all datasets within a given library</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#webpage-counterpart-https-wrds-www-wharton-upenn-edu-data-dictionary-comp-na-monthly-all">Webpage counterpart: https://wrds-www.wharton.upenn.edu/data-dictionary/comp_na_monthly_all/</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-strings">Part II: Strings</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-lists">Part III: Lists</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#query-data-from-wrds-server">5. Query Data from WRDS Server</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-dataset">6. Subsetting Dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#join-multiple-datasets">7. Join Multiple Datasets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-your-output">8. Saving Your Output</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-end">The End</a></li>
 </ul>
 
   </nav></div>
