@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Climb the Ladder! &#8212; Stern Data Bootcamp</title>
+    <title>Huggingface and gradio &#8212; Stern Data Bootcamp</title>
   
   
   
@@ -60,13 +60,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'extras/intro_to_python/ladder-1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extras/final_bonuses/bonus_gradio_huggingface';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Plotting with bokeh" href="../visualization/Plotting_with_bokeh.html" />
-    <link rel="prev" title="Regression Part II" href="../../solutions/practice_regression-solns.html" />
+    <link rel="next" title="Pretrained Models in an app" href="bonus_hot_dog.html" />
+    <link rel="prev" title="Using a pretrained model and dataset from huggingface" href="bonus_deep_learning_time_series.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -258,15 +256,15 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Bonus</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../final_bonuses/bonus_deep_learning_time_series.html">Using a pretrained model and dataset from huggingface</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bonus_deep_learning_time_series.html">Using a pretrained model and dataset from huggingface</a></li>
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../final_bonuses/bonus_gradio_huggingface.html">Huggingface and gradio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../final_bonuses/bonus_hot_dog.html">Pretrained Models in an app</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Huggingface and gradio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bonus_hot_dog.html">Pretrained Models in an app</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Library and WRDS</span></p>
 <ul class="nav bd-sidenav">
@@ -319,8 +317,8 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Climb the Ladder!</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro_to_python/ladder-1.html">Climb the Ladder!</a></li>
 
 
 
@@ -384,7 +382,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/extras/intro_to_python/ladder-1.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_fa25/blob/master/extras/final_bonuses/bonus_gradio_huggingface.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,7 +430,7 @@
       
       
       
-      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fextras/intro_to_python/ladder-1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_fa25/issues/new?title=Issue%20on%20page%20%2Fextras/final_bonuses/bonus_gradio_huggingface.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -462,7 +460,7 @@
       
       
       
-      <li><a href="../../_sources/extras/intro_to_python/ladder-1.ipynb" target="_blank"
+      <li><a href="../../_sources/extras/final_bonuses/bonus_gradio_huggingface.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -525,9 +523,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -538,26 +534,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Climb the Ladder!</h1>
+    <h1>Huggingface and gradio</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Climb the Ladder!</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#section-i-numbers-variables-and-math">Section I: Numbers, variables, and math.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-icing-do-you-need">How much icing do you need?</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-strings">Part II: Strings</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-lists">Part III: Lists</a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -567,139 +548,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="climb-the-ladder">
-<h1>Climb the Ladder!<a class="headerlink" href="#climb-the-ladder" title="Link to this heading">#</a></h1>
-<p>Our class moves quickly! Sometimes, it feels like we make leaps in logic that are a bit too big. Learn Python <em>slowly</em>, by doing many, many examples. Problems in this notebook start out easy and progressively get harder, so that the next rung of the Python ladder is always within reach.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="section-i-numbers-variables-and-math">
-<h1>Section I: Numbers, variables, and math.<a class="headerlink" href="#section-i-numbers-variables-and-math" title="Link to this heading">#</a></h1>
-<ol class="arabic simple">
-<li><p>What is 123456789 times 987654321?</p></li>
-</ol>
-<ol class="arabic simple" start="2">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">mass</span></code> that is equal to 100.</p></li>
-</ol>
-<ol class="arabic simple" start="3">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">velocity</span></code> that is equal to 5.</p></li>
-</ol>
-<ol class="arabic simple" start="4">
-<li><p>In physics, the momentum an object is exerting is equal to its mass times its velocity. That is, <span class="math notranslate nohighlight">\(p = mv\)</span>. Use the variables you defined above to compute this object’s momentum.</p></li>
-</ol>
-<ol class="arabic simple" start="5">
-<li><p>The kinetic energy of an object is half its mass times the square of its velocity. That is, <span class="math notranslate nohighlight">\(K = \frac{1}{2}mv^2\)</span>. Compute the kinetic energy for this object using the variables you’ve already created.</p></li>
-</ol>
-<section id="how-much-icing-do-you-need">
-<h2>How much icing do you need?<a class="headerlink" href="#how-much-icing-do-you-need" title="Link to this heading">#</a></h2>
-<p>In the next few exercises, our goal will be to figure out how much icing we will need to perfectly cover a giant doughnut. The doughnut features a hole (unfortunately no jelly filling), and a few large sprinkles. We only need to find the area of the red region in this shape.</p>
-<p><img alt="" src="extras/intro_to_python/imgs/donut.png" /></p>
-<ol class="arabic simple" start="6">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">pi</span></code> that is equal to 3.141</p></li>
-</ol>
-<ol class="arabic simple" start="7">
-<li><p>The radius of the largest circle is 13.425. The radius of the smaller circle is 4.792. The sprinkles are right triangles with side length 3.28. Create the variables <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, and <code class="docutils literal notranslate"><span class="pre">s</span></code> that represent these values.</p></li>
-</ol>
-<ol class="arabic simple" start="8">
-<li><p>Find the area of the larger circle (the whole doughnut, including the hole). Call this variable <code class="docutils literal notranslate"><span class="pre">area_big_circle</span></code>.</p></li>
-</ol>
+  <section id="huggingface-and-gradio">
+<h1>Huggingface and gradio<a class="headerlink" href="#huggingface-and-gradio" title="Link to this heading">#</a></h1>
+<p>A different library for sharing applications called <code class="docutils literal notranslate"><span class="pre">gradio</span></code> is becoming popular with easy deep learning model integrations.  For this assignment, your goal is to write a basic tutorial that:</p>
 <ul class="simple">
-<li><p><em>Hint:</em> The area of a circle with radius <span class="math notranslate nohighlight">\(r\)</span> is <span class="math notranslate nohighlight">\(A = \pi r^2\)</span>.</p></li>
+<li><p>Discusses the basics of building a <code class="docutils literal notranslate"><span class="pre">gradio</span></code> app with rows, columns, images, input fields, and sliders.  Demonstrate this with a <code class="docutils literal notranslate"><span class="pre">gradio</span></code> app of your imagination (different than docs creativity matters!).</p></li>
+<li><p>Demonstrates how to use the huggingface <code class="docutils literal notranslate"><span class="pre">transformers</span></code> library and its pipelines to build a <code class="docutils literal notranslate"><span class="pre">gradio</span></code> app. <a class="reference external" href="https://www.gradio.app/guides/using-hugging-face-integrations">here</a></p></li>
 </ul>
-<ol class="arabic simple" start="9">
-<li><p>Find the area of the smaller circle (the hole). Call this variable <code class="docutils literal notranslate"><span class="pre">area_small_circle</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="10">
-<li><p>Find the area of one triangle (a sprinkle), where each sprinkle has a base and height of length <code class="docutils literal notranslate"><span class="pre">s</span></code>. Call this variable <code class="docutils literal notranslate"><span class="pre">area_sprinkle</span></code>.</p></li>
-</ol>
-<ul class="simple">
-<li><p><em>Hint:</em> The area of a triangle with base <span class="math notranslate nohighlight">\(b\)</span> and height <span class="math notranslate nohighlight">\(h\)</span> is <span class="math notranslate nohighlight">\(A = \frac{1}{2}bh\)</span>.</p></li>
-</ul>
-<ol class="arabic simple" start="11">
-<li><p>Using the three values you calculated above, find the area of the shaded region (i.e., how much icing will you need?). Save the result in a variable called <code class="docutils literal notranslate"><span class="pre">area_donut</span></code>.</p></li>
-</ol>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-ii-strings">
-<h1>Part II: Strings<a class="headerlink" href="#part-ii-strings" title="Link to this heading">#</a></h1>
-<ol class="arabic simple" start="12">
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">name</span></code> that is equal to your name.</p></li>
-</ol>
-<ol class="arabic simple" start="13">
-<li><p>By adding strings together, introduce yourself in a string. For example <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">my</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">Tim!&quot;</span></code>. You may use f-strings if you know what they are and prefer to use them.</p></li>
-</ol>
-<ol class="arabic simple" start="14">
-<li><p>Define the string <code class="docutils literal notranslate"><span class="pre">fact</span></code> to be <code class="docutils literal notranslate"><span class="pre">&quot;Python</span> <span class="pre">programming</span> <span class="pre">is</span> <span class="pre">fun.&quot;</span></code></p></li>
-</ol>
-<ol class="arabic simple" start="15">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">fact</span></code> in order to get the “o” in “Python”.</p></li>
-</ol>
-<ol class="arabic simple" start="16">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">fact</span></code> in order to get the “u” in “fun” using a negative index.</p></li>
-</ol>
-<ol class="arabic simple" start="17">
-<li><p>Slice <code class="docutils literal notranslate"><span class="pre">fact</span></code> in order to get the word “programming”.</p></li>
-</ol>
-<ol class="arabic simple" start="18">
-<li><p>Uppercase <code class="docutils literal notranslate"><span class="pre">fact</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="19">
-<li><p>Replace the period at the end of <code class="docutils literal notranslate"><span class="pre">fact</span></code> with an exclamation point.</p></li>
-</ol>
-<ol class="arabic simple" start="20">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">.split()</span></code> to get the second word of this string. Was this easier than one of the problems above?</p></li>
-</ol>
-<ol class="arabic simple" start="21">
-<li><p>Reverse <code class="docutils literal notranslate"><span class="pre">fact</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="22">
-<li><p>Does <code class="docutils literal notranslate"><span class="pre">fact</span></code> contain the letter <code class="docutils literal notranslate"><span class="pre">y</span></code>? To find this answer, use the <code class="docutils literal notranslate"><span class="pre">in</span></code> keyword.</p></li>
-</ol>
-<ol class="arabic simple" start="23">
-<li><p>How many <code class="docutils literal notranslate"><span class="pre">o</span></code>s does <code class="docutils literal notranslate"><span class="pre">fact</span></code> have?</p></li>
-</ol>
-<ol class="arabic simple" start="24">
-<li><p>Replace all the <code class="docutils literal notranslate"><span class="pre">o</span></code>s in <code class="docutils literal notranslate"><span class="pre">fact</span></code> with an underscore (do not redefine <code class="docutils literal notranslate"><span class="pre">fact</span></code>).</p></li>
-</ol>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-iii-lists">
-<h1>Part III: Lists<a class="headerlink" href="#part-iii-lists" title="Link to this heading">#</a></h1>
-<ol class="arabic simple" start="25">
-<li><p>Create a list <code class="docutils literal notranslate"><span class="pre">friends</span></code> of your three best friends, <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Bob&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;Charlie&quot;</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="26">
-<li><p>Find the length of <code class="docutils literal notranslate"><span class="pre">friends</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="27">
-<li><p>Add your new friend <code class="docutils literal notranslate"><span class="pre">&quot;Debbie&quot;</span></code> to your list of <code class="docutils literal notranslate"><span class="pre">friends</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="28">
-<li><p>Charlie has no-showed to your piano recital. Remove him from your <code class="docutils literal notranslate"><span class="pre">friends</span></code>.</p></li>
-</ol>
-<ol class="arabic simple" start="29">
-<li><p>Using the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method, join <code class="docutils literal notranslate"><span class="pre">friends</span></code> to look like this <em>exactly</em>: <code class="docutils literal notranslate"><span class="pre">&quot;Alice</span> <span class="pre">&amp;</span> <span class="pre">Bob</span> <span class="pre">&amp;</span> <span class="pre">Debbie&quot;</span></code></p></li>
-</ol>
-<ol class="arabic simple" start="30">
-<li><p>What is the length of <code class="docutils literal notranslate"><span class="pre">[]</span></code>? What about <code class="docutils literal notranslate"><span class="pre">[[]]</span></code>? Why?</p></li>
-</ol>
-<p>For the next few problems, we’ll use this list:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nested_deep</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">]]]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="31">
-<li><p>What is the length of <code class="docutils literal notranslate"><span class="pre">nested_deep</span></code>?</p></li>
-</ol>
-<ol class="arabic simple" start="32">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">nested_deep</span></code> to get the 5.</p></li>
-</ol>
-<ol class="arabic simple" start="33">
-<li><p>Index <code class="docutils literal notranslate"><span class="pre">nested_deep</span></code> to get the 8.</p></li>
-</ol>
-<ul class="simple">
-<li><p><em>Hint:</em> If your answer looks like <code class="docutils literal notranslate"><span class="pre">[8]</span></code>, that’s not the correct answer!</p></li>
-</ul>
+<p>Create a github repository with your tutorial notebook and a README with a paragraph overview of the tutorial and description of huggingface model and app.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -715,7 +571,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./extras/intro_to_python"
+            path: "./extras/final_bonuses"
         },
         predefinedOutput: true
     }
@@ -733,20 +589,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../solutions/practice_regression-solns.html"
+       href="bonus_deep_learning_time_series.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Regression Part II</p>
+        <p class="prev-next-title">Using a pretrained model and dataset from huggingface</p>
       </div>
     </a>
     <a class="right-next"
-       href="../visualization/Plotting_with_bokeh.html"
+       href="bonus_hot_dog.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting with <code class="docutils literal notranslate"><span class="pre">bokeh</span></code></p>
+        <p class="prev-next-title">Pretrained Models in an app</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -756,29 +612,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Climb the Ladder!</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#section-i-numbers-variables-and-math">Section I: Numbers, variables, and math.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-icing-do-you-need">How much icing do you need?</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-strings">Part II: Strings</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-lists">Part III: Lists</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

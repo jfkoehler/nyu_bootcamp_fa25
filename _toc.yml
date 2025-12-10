@@ -40,6 +40,10 @@ parts:
     - file: intro_sequential_models
     - file: hf_jailbreak_example
 
+  - caption: Bonus
+    chapters:
+    - glob: extras/final_bonuses/*
+
   - caption: Library and WRDS 
     chapters:
     - file: presentations/library/wrds_2
