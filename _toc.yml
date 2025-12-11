@@ -39,6 +39,7 @@ parts:
     - file: pytorch_intro_convnets
     - file: intro_sequential_models
     - file: hf_jailbreak_example
+    - file: saving_finetuning_streamlit
 
   - caption: Bonus
     chapters:
